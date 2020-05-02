@@ -1,0 +1,20 @@
+{
+  "APPLY" = "Áp dụng";
+  "DO_YOU_REALLY_WANT_TO_KILL_TIKTOK" = "Bạn có muốn tắt TikTok?";
+  "CONFIRM" = "Xác nhận";
+  "CANCEL" = "Hủy";
+  "MAIN_PREFERENCES" = "Tùy chỉnh chính";
+  "NO_ADS" = "Gỡ quảng cáo";
+  "UNLIMITED_DOWNLOAD" = "Download không giới hạn";
+  "MORE_FEATURES_COMMING_SOON" = "Nhiều tính năng mới sẽ cập nhật sau";
+  "OTHER_PREFERENCES" = "Tùy chỉnh phụ";
+  "RESET_SETTINGS" = "Đặt lại tùy chỉnh";
+  "SUPPORT_ME" = "Hỗ trợ tôi";
+  "DONATION" = "Ủng hộ 💰";
+  "BUY_ME_A_COFFEE" = "Mua giúp tôi một ly cà phê";
+  "FEATURE_REQUEST" = "Yêu cầu thêm tính năng ✨";
+  "SEND_ME_AN_EMAIL_WITH_YOUR_REQUEST" = "Gửi email yêu cầu";
+  "SOURCE_CODE" = "Mã nguồn 🤖";
+  "FOUND_A_BUG" = "Tìm thấy lỗi 🐛";
+  "LEAVE_A_BUG_REPORT_ON_GITHUB" = "Báo lỗi trên Github";
+}

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>items</key>
+    <array>
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>headerCellClass</key>
+        <string>HaoPSHeaderImageCellCustom</string>
+        <key>image</key>
+        <string>/Library/PreferenceBundles/TTGPref.bundle/Banner.jpg</string>
+      </dict>
+
+      <!-- <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>headerCellClass</key>
+        <string>HaoPSHeaderCellCustom</string>
+        <key>label</key>
+        <string>TikTok God</string>
+      </dict> -->
+
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>label</key>
+        <string>MAIN_PREFERENCES</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HaoPSSwitchCellCustom</string>
+        <key>default</key>
+        <true/>
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>noads</string>
+        <key>label</key>
+        <string>NO_ADS</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HaoPSSwitchCellCustom</string>
+        <key>default</key>
+        <true/>
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>unlimitedDownload</string>
+        <key>label</key>
+        <string>UNLIMITED_DOWNLOAD</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSLinkCell</string>
+        <key>cellClass</key>
+        <string>HaoPSLinkCellCustom</string>
+        <key>label</key>
+        <string>MORE_FEATURES_COMMING_SOON</string>
+        <key>subtitle</key>
+        <string>Download without watermark, change country,...</string>
+        <key>action</key>
+        <string>openURL:</string>
+        <key>url</key>
+        <string>https://twitter.com/haoict</string>
+      </dict>
+
+      <!-- Reset Settings -->
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>label</key>
+        <string>OTHER_PREFERENCES</string>
+      </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSLinkCell</string>
+        <key>cellClass</key>
+        <string>HaoPSLinkCellCustom</string>
+        <key>label</key>
+        <string>RESET_SETTINGS</string>
+        <key>action</key>
+        <string>resetSettings:</string>
+      </dict>
+
+      <!-- Support Me -->
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>label</key>
+        <string>SUPPORT_ME</string>
+      </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSLinkCell</string>
+        <key>cellClass</key>
+        <string>HaoPSLinkCellCustom</string>
+        <key>label</key>
+        <string>Hao Nguyen 👨🏻‍💻</string>
+        <key>subtitle</key>
+        <string>@haoict</string>
+        <key>action</key>
+        <string>openURL:</string>
+        <key>url</key>
+        <string>https://twitter.com/haoict</string>
+      </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSLinkCell</string>
+        <key>cellClass</key>
+        <string>HaoPSLinkCellCustom</string>
+        <key>label</key>
+        <string>DONATION</string>
+        <key>subtitle</key>
+        <string>BUY_ME_A_COFFEE</string>
+        <key>action</key>
+        <string>openURL:</string>
+        <key>url</key>
+        <string>https://paypal.me/haoict</string>
+      </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSLinkCell</string>
+        <key>cellClass</key>
+        <string>HaoPSLinkCellCustom</string>
+        <key>label</key>
+        <string>FEATURE_REQUEST</string>
+        <key>subtitle</key>
+        <string>SEND_ME_AN_EMAIL_WITH_YOUR_REQUEST</string>
+        <key>action</key>
+        <string>openURL:</string>
+        <key>url</key>
+        <string>mailto:hao.ict56@gmail.com?subject=TikTok%20God%20Feature%20Request</string>
+      </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSLinkCell</string>
+        <key>cellClass</key>
+        <string>HaoPSLinkCellCustom</string>
+        <key>label</key>
+        <string>SOURCE_CODE</string>
+        <key>subtitle</key>
+        <string>Github</string>
+        <key>action</key>
+        <string>openURL:</string>
+        <key>url</key>
+        <string>https://github.com/haoict/tiktok-god</string>
+      </dict>
+      <dict>
+        <key>cell</key>
+        <string>PSLinkCell</string>
+        <key>cellClass</key>
+        <string>HaoPSLinkCellCustom</string>
+        <key>label</key>
+        <string>FOUND_A_BUG</string>
+        <key>subtitle</key>
+        <string>LEAVE_A_BUG_REPORT_ON_GITHUB</string>
+        <key>action</key>
+        <string>openURL:</string>
+        <key>url</key>
+        <string>https://github.com/haoict/tiktok-god/issues/new</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>footerText</key>
+        <string>TikTok God, Made With ❤️</string>
+        <key>isStaticText</key>
+        <true/>
+      </dict>
+
+    </array>
+    <key>title</key>
+    <string>TikTok God</string>
+  </dict>
+</plist>

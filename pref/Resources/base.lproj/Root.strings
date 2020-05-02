@@ -1,0 +1,20 @@
+{
+  "APPLY" = "Apply";
+  "DO_YOU_REALLY_WANT_TO_KILL_TIKTOK" = "Do you really want to kill TikTok?";
+  "CONFIRM" = "Confirm";
+  "CANCEL" = "Cancel";
+  "MAIN_PREFERENCES" = "Main Preferences";
+  "NO_ADS" = "No Ads";
+  "UNLIMITED_DOWNLOAD" = "Unlimited Download";
+  "MORE_FEATURES_COMMING_SOON" = "More Features Comming Soon";
+  "OTHER_PREFERENCES" = "Other Preferences";
+  "RESET_SETTINGS" = "Reset Settings";
+  "SUPPORT_ME" = "Support Me";
+  "DONATION" = "Donation 💰";
+  "BUY_ME_A_COFFEE" = "Buy me a coffee";
+  "FEATURE_REQUEST" = "Feature Request ✨";
+  "SEND_ME_AN_EMAIL_WITH_YOUR_REQUEST" = "Send Me An Email With Your Request";
+  "SOURCE_CODE" = "Source Code 🤖";
+  "FOUND_A_BUG" = "Found A Bug 🐛";
+  "LEAVE_A_BUG_REPORT_ON_GITHUB" = "Leave A Bug Report on Github";
+}
