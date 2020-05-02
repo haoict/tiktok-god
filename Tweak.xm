@@ -12,9 +12,6 @@ static void reloadPrefs() {
   noads = [[settings objectForKey:@"noads"] ?: @(YES) boolValue];
   unlimitedDownload = [[settings objectForKey:@"unlimitedDownload"] ?: @(YES) boolValue];
 }
-static void PreferencesChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
-  reloadPrefs();
-}
 
 %group CoreLogic
   %hook AWEAwemeModel
@@ -53,7 +50,7 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
  * Constructor
  */
 %ctor {
-  CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) PreferencesChangedCallback, CFSTR(PREF_CHANGED_NOTIF), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+  CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) reloadPrefs, CFSTR(PREF_CHANGED_NOTIF), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
   reloadPrefs();
 
   %init(CoreLogic);
