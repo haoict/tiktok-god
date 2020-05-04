@@ -29,6 +29,10 @@ make do
 
 ## Contributors
 
+[haoict](https://github.com/haoict)
+
+[ryannair05](https://github.com/ryannair05)
+
 Contributions of any kind welcome!
 
 ## License

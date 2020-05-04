@@ -5,7 +5,11 @@
   "CANCEL" = "Hủy";
   "MAIN_PREFERENCES" = "Tùy chỉnh chính";
   "NO_ADS" = "Gỡ quảng cáo";
+  "REMOVE_SPONSORED_VIDEO" = "Loại bỏ những video \"Được tài trợ\"";
   "UNLIMITED_DOWNLOAD" = "Download không giới hạn";
+  "CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO" = "Có thể download video không cho tải";
+  "DOWNLOAD_WITHOUT_WATERMARK" = "Download không logo (watermark)";
+  "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Nhấn và giữ video để hiện nút download";
   "MORE_FEATURES_COMMING_SOON" = "Nhiều tính năng mới sẽ cập nhật sau";
   "OTHER_PREFERENCES" = "Tùy chỉnh phụ";
   "RESET_SETTINGS" = "Đặt lại tùy chỉnh";

@@ -42,6 +42,8 @@
         <string>noads</string>
         <key>label</key>
         <string>NO_ADS</string>
+        <key>subtitle</key>
+        <string>REMOVE_SPONSORED_VIDEO</string>
         <key>PostNotification</key>
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
@@ -59,6 +61,27 @@
         <string>unlimitedDownload</string>
         <key>label</key>
         <string>UNLIMITED_DOWNLOAD</string>
+        <key>subtitle</key>
+        <string>CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HaoPSSwitchCellCustom</string>
+        <key>default</key>
+        <true/>
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>downloadWithoutWatermark</string>
+        <key>label</key>
+        <string>DOWNLOAD_WITHOUT_WATERMARK</string>
+        <key>subtitle</key>
+        <string>PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON</string>
         <key>PostNotification</key>
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
@@ -71,7 +94,7 @@
         <key>label</key>
         <string>MORE_FEATURES_COMMING_SOON</string>
         <key>subtitle</key>
-        <string>Download without watermark, change country,...</string>
+        <string>Change country, Auto Scroll Video...</string>
         <key>action</key>
         <string>openURL:</string>
         <key>url</key>
