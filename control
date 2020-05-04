@@ -1,16 +1,17 @@
 Package: com.haoict.tiktokgod
 Name: TikTok God
 Depends: mobilesubstrate, preferenceloader, firmware (>= 10)
-Version: 0.0.1
+Version: 1.1.0
 Architecture: iphoneos-arm
 Description: The best tweak for TikTok app.
  The best tweak for TikTok app.
  Features:
  - Remove Ads
  - Enable download for all videos
- - More features comming soon... (download without watermark, change country)
+ - Download without watermark
+ - Change Region
  - Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
- - Support latest TikTok version (If it doesn't work, you should update the app to latest version)
+ - Support latest TikTok version (If it doesn't work, you should update the app to latest version >= 15.9.0)
  . 
  I work very hard to make good, free and open source tweaks for everyone
  If you want to support, you can buy me a coffee at https://www.paypal.me/haoict

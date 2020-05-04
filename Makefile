@@ -8,7 +8,7 @@ INSTALL_TARGET_PROCESSES = TikTok Preferences
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = tiktokgod
-tiktokgod_FILES = Tweak.xm
+tiktokgod_FILES = $(wildcard *.xm *.m)
 tiktokgod_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk

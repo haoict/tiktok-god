@@ -6,13 +6,17 @@
 BOOL noads;
 BOOL unlimitedDownload;
 BOOL downloadWithoutWatermark;
+BOOL changeRegion;
+NSDictionary *region;
 
 static void reloadPrefs() {
-  NSDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@PLIST_PATH];
+  NSDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@PLIST_PATH] ?: [@{} mutableCopy];
 
   noads = [[settings objectForKey:@"noads"] ?: @(YES) boolValue];
   unlimitedDownload = [[settings objectForKey:@"unlimitedDownload"] ?: @(YES) boolValue];
   downloadWithoutWatermark = [[settings objectForKey:@"downloadWithoutWatermark"] ?: @(YES) boolValue];
+  changeRegion = [[settings objectForKey:@"changeRegion"] ?: @(NO) boolValue];
+  region = [settings objectForKey:@"region"] ?: [@{} mutableCopy];
 }
 
 static void showAlertMessage(NSString *title, NSString *message) {
@@ -100,14 +104,14 @@ static void showAlertMessage(NSString *title, NSString *message) {
 
     %new
     - (void)saveVideoToPhotoLibrary {
-      NSURL* videoURL = [NSURL URLWithString:self.model.video.playURL.originURLList.firstObject];
-      NSURLSessionDownloadTask* downloadTask = [[NSURLSession sharedSession] downloadTaskWithURL:videoURL completionHandler:^(NSURL* location, NSURLResponse* response, NSError* error) {
+      NSURL* videoUrl = [NSURL URLWithString:self.model.video.playURL.originURLList.firstObject];
+      NSURLSessionDownloadTask* downloadTask = [[NSURLSession sharedSession] downloadTaskWithURL:videoUrl completionHandler:^(NSURL* location, NSURLResponse* response, NSError* error) {
         if (error) {
           dispatch_async(dispatch_get_main_queue(), ^{
             showAlertMessage(@"Download Error", [error localizedDescription]);
           });
         }
-        NSString* fileName = [[videoURL lastPathComponent] stringByAppendingPathExtension:@"mp4"];
+        NSString* fileName = [[videoUrl lastPathComponent] stringByAppendingPathExtension:@"mp4"];
         [location setResourceValue:fileName forKey:NSURLNameKey error:nil];
         location = [[location URLByDeletingLastPathComponent] URLByAppendingPathComponent:fileName];
         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
@@ -134,15 +138,15 @@ static void showAlertMessage(NSString *title, NSString *message) {
   // https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23
   %hook CTCarrier
     - (NSString *)mobileCountryCode {
-        return [TikTokConfig manager].openSelect?[TikTokConfig manager].mcc:%orig;
+      return (changeRegion && region[@"mcc"] != nil) ? region[@"mcc"] : %orig;
     }
 
     - (NSString *)isoCountryCode {
-        return [TikTokConfig manager].openSelect?[TikTokConfig manager].countryCode:%orig;
+      return (changeRegion && region[@"code"] != nil) ? region[@"code"] : %orig;
     }
 
     - (NSString *)mobileNetworkCode {
-        return [TikTokConfig manager].openSelect?[TikTokConfig manager].mnc:%orig;
+      return (changeRegion && region[@"mnc"] != nil) ? region[@"mnc"] : %orig;
     }
   %end
 %end

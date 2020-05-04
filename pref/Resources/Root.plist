@@ -88,13 +88,343 @@
 
       <dict>
         <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HaoPSSwitchCellCustom</string>
+        <key>default</key>
+        <false/>
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>changeRegion</string>
+        <key>label</key>
+        <string>CHANGE_REGION</string>
+        <key>subtitle</key>
+        <string>MAY_NOT_WORK_FOR_IPAD</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSLinkListCell</string>
+        <key>cellClass</key>
+        <string>HaoPSLinkCellCustom</string>
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>region</string>
+        <key>label</key>
+        <string>SELECT_COUNTRY</string>
+        <key>detail</key>
+        <string>PSListItemsController</string>
+        <key>validTitles</key>
+        <array>
+          <string>Taiwan 🇹🇼</string>
+          <string>Hong Kong 🇭🇰</string>
+          <string>Macao 🇲🇴</string>
+          <string>Japan 🇯🇵</string>
+          <string>South Korea 🇰🇷</string>
+          <string>United Kingdom 🇬🇧</string>
+          <string>United States 🇺🇸</string>
+          <string>Australia 🇦🇺</string>
+          <string>Canada 🇨🇦</string>
+          <string>Argentina 🇦🇷</string>
+          <string>Philippines 🇵🇭</string>
+          <string>Laos 🇱🇦</string>
+          <string>Malaysia 🇲🇾</string>
+          <string>Thailand 🇹🇭</string>
+          <string>Singapore 🇰🇭</string>
+          <string>Indonesia 🇮🇩</string>
+          <string>Vietnam 🇻🇳</string>
+          <string>Anguilla 🇦🇮</string>
+          <string>Panama 🇵🇦</string>
+          <string>Germany 🇩🇪</string>
+          <string>Russia 🇷🇺</string>
+          <string>France 🇫🇷</string>
+          <string>Finland 🇫🇮</string>
+          <string>Italy 🇮🇹</string>
+          <string>India 🇮🇳</string>
+          <string>Pakistan 🇵🇰</string>
+        </array>
+        <key>validValues</key>
+        <array>
+          <dict>
+            <key>area</key>
+            <string>Taiwan 🇹🇼</string>
+            <key>code</key>
+            <string>TW</string>
+            <key>mcc</key>
+            <string>466</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Hong Kong 🇭🇰</string>
+            <key>code</key>
+            <string>HK</string>
+            <key>mcc</key>
+            <string>454</string>
+            <key>mnc</key>
+            <string>00</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Macao 🇲🇴</string>
+            <key>code</key>
+            <string>MO</string>
+            <key>mcc</key>
+            <string>455</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Japan 🇯🇵</string>
+            <key>code</key>
+            <string>JP</string>
+            <key>mcc</key>
+            <string>440</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>South Korea 🇰🇷</string>
+            <key>code</key>
+            <string>KR</string>
+            <key>mcc</key>
+            <string>450</string>
+            <key>mnc</key>
+            <string>02</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>United Kingdom 🇬🇧</string>
+            <key>code</key>
+            <string>UK</string>
+            <key>mcc</key>
+            <string>234</string>
+            <key>mnc</key>
+            <string>00</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>United States 🇺🇸</string>
+            <key>code</key>
+            <string>US</string>
+            <key>mcc</key>
+            <string>310</string>
+            <key>mnc</key>
+            <string>032</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Australia 🇦🇺</string>
+            <key>code</key>
+            <string>AU</string>
+            <key>mcc</key>
+            <string>505</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Canada 🇨🇦</string>
+            <key>code</key>
+            <string>CA</string>
+            <key>mcc</key>
+            <string>302</string>
+            <key>mnc</key>
+            <string>130</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Argentina 🇦🇷</string>
+            <key>code</key>
+            <string>AR</string>
+            <key>mcc</key>
+            <string>722</string>
+            <key>mnc</key>
+            <string>010</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Philippines 🇵🇭</string>
+            <key>code</key>
+            <string>PH</string>
+            <key>mcc</key>
+            <string>515</string>
+            <key>mnc</key>
+            <string>02</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Laos 🇱🇦</string>
+            <key>code</key>
+            <string>LA</string>
+            <key>mcc</key>
+            <string>457</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Malaysia 🇲🇾</string>
+            <key>code</key>
+            <string>MY</string>
+            <key>mcc</key>
+            <string>502</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Thailand 🇹🇭</string>
+            <key>code</key>
+            <string>TH</string>
+            <key>mcc</key>
+            <string>520</string>
+            <key>mnc</key>
+            <string>00</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Singapore 🇰🇭</string>
+            <key>code</key>
+            <string>SG</string>
+            <key>mcc</key>
+            <string>525</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Indonesia 🇮🇩</string>
+            <key>code</key>
+            <string>ID</string>
+            <key>mcc</key>
+            <string>510</string>
+            <key>mnc</key>
+            <string>00</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Vietnam 🇻🇳</string>
+            <key>code</key>
+            <string>VN</string>
+            <key>mcc</key>
+            <string>452</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Anguilla 🇦🇮</string>
+            <key>code</key>
+            <string>AI</string>
+            <key>mcc</key>
+            <string>365</string>
+            <key>mnc</key>
+            <string>010</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Panama 🇵🇦</string>
+            <key>code</key>
+            <string>PA</string>
+            <key>mcc</key>
+            <string>714</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Germany 🇩🇪</string>
+            <key>code</key>
+            <string>DE</string>
+            <key>mcc</key>
+            <string>262</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Russia 🇷🇺</string>
+            <key>code</key>
+            <string>RU</string>
+            <key>mcc</key>
+            <string>250</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>France 🇫🇷</string>
+            <key>code</key>
+            <string>FR</string>
+            <key>mcc</key>
+            <string>208</string>
+            <key>mnc</key>
+            <string>00</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Finland 🇫🇮</string>
+            <key>code</key>
+            <string>FL</string>
+            <key>mcc</key>
+            <string>244</string>
+            <key>mnc</key>
+            <string>03</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Italy 🇮🇹</string>
+            <key>code</key>
+            <string>IT</string>
+            <key>mcc</key>
+            <string>222</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>India 🇮🇳</string>
+            <key>code</key>
+            <string>IN</string>
+            <key>mcc</key>
+            <string>404</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Pakistan 🇵🇰</string>
+            <key>code</key>
+            <string>PK</string>
+            <key>mcc</key>
+            <string>410</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+        </array>
+        <key>default</key>
+        <integer>1</integer>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
         <string>PSLinkCell</string>
         <key>cellClass</key>
         <string>HaoPSLinkCellCustom</string>
         <key>label</key>
         <string>MORE_FEATURES_COMMING_SOON</string>
         <key>subtitle</key>
-        <string>Change country, Auto Scroll Video...</string>
+        <string>Auto Scroll Video, ...</string>
         <key>action</key>
         <string>openURL:</string>
         <key>url</key>
