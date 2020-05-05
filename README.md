@@ -7,7 +7,7 @@ Best free & open source tweak for TikTok app on iOS 10 - 13
 ## Features
 - Remove Ads
 - Enable download for all videos
-- Ddownload without watermark
+- Download without watermark
 - Change region
 - Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
 - Support latest TikTok version (If it doesn't work, you should update the app to latest version >= 15.9.0)
