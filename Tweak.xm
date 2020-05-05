@@ -6,6 +6,7 @@
 BOOL noads;
 BOOL unlimitedDownload;
 BOOL downloadWithoutWatermark;
+BOOL autoPlayNextVideo;
 BOOL changeRegion;
 NSDictionary *region;
 
@@ -15,6 +16,7 @@ static void reloadPrefs() {
   noads = [[settings objectForKey:@"noads"] ?: @(YES) boolValue];
   unlimitedDownload = [[settings objectForKey:@"unlimitedDownload"] ?: @(YES) boolValue];
   downloadWithoutWatermark = [[settings objectForKey:@"downloadWithoutWatermark"] ?: @(YES) boolValue];
+  autoPlayNextVideo = [[settings objectForKey:@"autoPlayNextVideo"] ?: @(NO) boolValue];
   changeRegion = [[settings objectForKey:@"changeRegion"] ?: @(NO) boolValue];
   region = [settings objectForKey:@"region"] ?: [@{} mutableCopy];
 }
@@ -61,17 +63,18 @@ static void showAlertMessage(NSString *title, NSString *message) {
     }
 
     - (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-      AWEAwemeDislikeNewReasonTableViewCell * orig = %orig;
-      if (downloadWithoutWatermark && indexPath.row == 0 && indexPath.section == 0) {
-        orig.titleLabel.text = [NSString stringWithFormat:@"%@%@", orig.titleLabel.text, @" - No Watermark (TikTok God)"];
+      AWEAwemeDislikeNewReasonTableViewCell *orig = %orig;
+      if (downloadWithoutWatermark && orig.model.dislikeType == 1) {
+        orig.titleLabel.text = [NSString stringWithFormat:@"%@%@", orig.titleLabel.text, @" - No Watermark"];
       }
       return orig;
     }
 
     - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-      if (downloadWithoutWatermark && indexPath.row == 0 && indexPath.section == 0) {
+      AWEAwemeDislikeNewReasonTableViewCell *cell = [self tableView:arg1 cellForRowAtIndexPath:indexPath];
+      if (downloadWithoutWatermark && cell.model.dislikeType == 1) {
         [self didSelectDownloadCell];
-        [self dismissActionsWithAnimation];
+        [self dismissActionsWithExecutingBlock];
         return;
       }
       %orig;
@@ -147,6 +150,12 @@ static void showAlertMessage(NSString *title, NSString *message) {
 
     - (NSString *)mobileNetworkCode {
       return (changeRegion && region[@"mnc"] != nil) ? region[@"mnc"] : %orig;
+    }
+  %end
+
+  %hook AWEFeedGuideManager
+    - (BOOL)enableAutoplay {
+      return autoPlayNextVideo;
     }
   %end
 %end

@@ -11,9 +11,11 @@
   "CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO" = "Can download undownloadable videos";
   "DOWNLOAD_WITHOUT_WATERMARK" = "Download Without Watermark";
   "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Press and hold video to show download button";
+  "AUTO_PLAY_NEXT_VIDEO" = "Auto Play Next Video";
+  "FINGER_FREE" = "Finger free, yeah!";
   "CHANGE_REGION" = "Change Region";
   "VIEW_TIKTOK_FROM_ANOTHER_COUNTRY" = "View TikTok from another country";
-  "MAY_NOT_WORK_FOR_IPAD" = "(may not work for iPad)";
+  "MAY_NOT_WORK_FOR_IPAD_AND_SOME_DEVICES" = "(may not work for iPad and some devices";
   "SELECT_COUNTRY" = "Select Country";
   "MORE_FEATURES_COMMING_SOON" = "More Features Comming Soon";
   "OTHER_PREFERENCES" = "Other Preferences";

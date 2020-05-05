@@ -18,13 +18,19 @@
 @property(retain, nonatomic) AWEVideoModel* video;
 @end
 
+@interface AWEAwemeDislikeNewReasonModel : NSObject
+@property(nonatomic) long long dislikeType;
+@end
+
 @interface AWEAwemeDislikeNewReasonTableViewCell : NSObject
+@property(retain, nonatomic) AWEAwemeDislikeNewReasonModel *model;
 @property(retain, nonatomic) UILabel *titleLabel;
 @end
 
 @interface AWEAwemePlayDislikeViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
-- (void)dismissActionsWithAnimation;
+- (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)dismissActionsWithExecutingBlock;
 - (void)didSelectDownloadCell; // new method
 - (void)saveVideoToPhotoLibrary; // new method
 @end
