@@ -165,6 +165,8 @@
           <string>Italy 🇮🇹</string>
           <string>India 🇮🇳</string>
           <string>Pakistan 🇵🇰</string>
+          <string>Denmark 🇩🇰</string>
+          <string>Norway 🇳🇴</string>
         </array>
         <key>validValues</key>
         <array>
@@ -425,6 +427,26 @@
             <string>PK</string>
             <key>mcc</key>
             <string>410</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Denmark 🇩🇰</string>
+            <key>code</key>
+            <string>DK</string>
+            <key>mcc</key>
+            <string>238</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Norway 🇳🇴</string>
+            <key>code</key>
+            <string>NO</string>
+            <key>mcc</key>
+            <string>242</string>
             <key>mnc</key>
             <string>01</string>
           </dict>
