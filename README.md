@@ -35,6 +35,8 @@ make do
 
 [ryannair05](https://github.com/ryannair05)
 
+[steffanjensen](https://github.com/steffanjensen)
+
 My project uses some source code from [hookTikTok](https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23) by chenxk-j for Change Region function. Credit goes to him. Thanks!
 
 Contributions of any kind welcome!
