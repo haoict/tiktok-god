@@ -7,6 +7,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = tiktokgod
 tiktokgod_FILES = $(wildcard *.xm *.m)
+tiktokgod_EXTRA_FRAMEWORKS = libhdev
 tiktokgod_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk

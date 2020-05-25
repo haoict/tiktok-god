@@ -6,6 +6,7 @@ BUNDLE_NAME = TTGPref
 TTGPref_FILES = $(wildcard *.m)
 TTGPref_INSTALL_PATH = /Library/PreferenceBundles
 TTGPref_PRIVATE_FRAMEWORKS = Preferences
+TTGPref_EXTRA_FRAMEWORKS = libhdev
 TTGPref_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
