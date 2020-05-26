@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <Photos/Photos.h>
+#import <libhdev/HUtilities/HDownloadMedia.h>
 
 #define PLIST_PATH "/var/mobile/Library/Preferences/com.haoict.tiktokgodpref.plist"
 #define PREF_CHANGED_NOTIF "com.haoict.tiktokgodpref/PrefChanged"
@@ -31,6 +31,4 @@
 @property(retain, nonatomic) AWEAwemeModel *model;
 - (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)dismissActionsWithExecutingBlock;
-- (void)didSelectDownloadCell; // new method
-- (void)saveVideoToPhotoLibrary; // new method
 @end

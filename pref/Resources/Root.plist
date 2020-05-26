@@ -173,6 +173,7 @@
           <string>Pakistan 🇵🇰</string>
           <string>Denmark 🇩🇰</string>
           <string>Norway 🇳🇴</string>
+          <string>China (won't work, only for China appstore)</string>
         </array>
         <key>validValues</key>
         <array>
@@ -455,6 +456,16 @@
             <string>242</string>
             <key>mnc</key>
             <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>China 🇨🇳</string>
+            <key>code</key>
+            <string>CN</string>
+            <key>mcc</key>
+            <string>460</string>
+            <key>mnc</key>
+            <string>00</string>
           </dict>
         </array>
         <key>default</key>

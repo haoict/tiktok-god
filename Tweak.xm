@@ -21,21 +21,6 @@ static void reloadPrefs() {
   region = [settings objectForKey:@"region"] ?: [@{} mutableCopy];
 }
 
-static void showAlertMessage(NSString *title, NSString *message) {
-  __block UIWindow* topWindow;
-  topWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  topWindow.rootViewController = [UIViewController new];
-  topWindow.windowLevel = UIWindowLevelAlert + 1;
-  UIAlertController* alert = [UIAlertController alertControllerWithTitle:title?:@"Alert" message:message preferredStyle:UIAlertControllerStyleAlert];
-  [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    topWindow.hidden = YES;
-    topWindow = nil;
-  }]];
-
-  [topWindow makeKeyAndVisible];
-  [topWindow.rootViewController presentViewController:alert animated:YES completion:nil];
-}
-
 %group CoreLogic
   %hook AWEAwemeModel
     - (id)initWithDictionary:(id)arg1 error:(id *)arg2 {
@@ -73,67 +58,11 @@ static void showAlertMessage(NSString *title, NSString *message) {
     - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
       AWEAwemeDislikeNewReasonTableViewCell *cell = [self tableView:arg1 cellForRowAtIndexPath:indexPath];
       if (downloadWithoutWatermark && cell.model.dislikeType == 1) {
-        [self didSelectDownloadCell];
+        [HDownloadMedia checkPermissionToPhotosAndDownload:self.model.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
         [self dismissActionsWithExecutingBlock];
         return;
       }
       %orig;
-    }
-
-    %new 
-    - (void)didSelectDownloadCell {
-      PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-      switch(status) {
-        case PHAuthorizationStatusNotDetermined:
-          [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus authorizationStatus) {
-            if(authorizationStatus == PHAuthorizationStatusAuthorized) {
-              [self saveVideoToPhotoLibrary];
-            }
-          }];
-          break;
-        case PHAuthorizationStatusAuthorized:
-          [self saveVideoToPhotoLibrary];
-          break;
-        case PHAuthorizationStatusDenied:
-          UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Permission Required" message:@"TikTok needs permission to Photos" preferredStyle:UIAlertControllerStyleAlert];
-          [alert addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil]];
-          [alert addAction:[UIAlertAction actionWithTitle:@"Go To Settings" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
-          }]];
-          [self presentViewController:alert animated:YES completion:nil];
-          break;
-      }
-    }
-
-    %new
-    - (void)saveVideoToPhotoLibrary {
-      NSURL* videoUrl = [NSURL URLWithString:self.model.video.playURL.originURLList.firstObject];
-      NSURLSessionDownloadTask* downloadTask = [[NSURLSession sharedSession] downloadTaskWithURL:videoUrl completionHandler:^(NSURL* location, NSURLResponse* response, NSError* error) {
-        if (error) {
-          dispatch_async(dispatch_get_main_queue(), ^{
-            showAlertMessage(@"Download Error", [error localizedDescription]);
-          });
-        }
-        NSString* fileName = [[videoUrl lastPathComponent] stringByAppendingPathExtension:@"mp4"];
-        [location setResourceValue:fileName forKey:NSURLNameKey error:nil];
-        location = [[location URLByDeletingLastPathComponent] URLByAppendingPathComponent:fileName];
-        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-                                                [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:location];
-                                              } 
-                                              completionHandler:^(BOOL success, NSError* error) {
-                                                [[NSFileManager defaultManager] removeItemAtURL:location error:nil];
-                                                if(success) {
-                                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                                    showAlertMessage(nil, @"Download Success");
-                                                  });
-                                                } else {
-                                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                                    showAlertMessage(@"Download Error", [error localizedDescription]);
-                                                  });
-                                                }
-                                              }];
-      }];
-      [downloadTask resume];
     }
   %end
 
