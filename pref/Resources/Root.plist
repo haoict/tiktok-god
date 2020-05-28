@@ -173,6 +173,12 @@
           <string>Pakistan 🇵🇰</string>
           <string>Denmark 🇩🇰</string>
           <string>Norway 🇳🇴</string>
+          <string>Sudan 🇸🇩</string>
+          <string>Romania 🇷🇴</string>
+          <string>United Arab Emirates 🇦🇪</string>
+          <string>Saudi Arabia 🇸🇦</string>
+          <string>Egypt 🇪🇬</string>
+          <string>Lebanon 🇱🇧</string>
           <string>China (won't work, only for China appstore)</string>
         </array>
         <key>validValues</key>
@@ -456,6 +462,66 @@
             <string>242</string>
             <key>mnc</key>
             <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Sudan 🇸🇩</string>
+            <key>code</key>
+            <string>SD</string>
+            <key>mcc</key>
+            <string>634</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Romania 🇷🇴</string>
+            <key>code</key>
+            <string>RO</string>
+            <key>mcc</key>
+            <string>226</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>United Arab Emirates 🇦🇪</string>
+            <key>code</key>
+            <string>AE</string>
+            <key>mcc</key>
+            <string>424</string>
+            <key>mnc</key>
+            <string>02</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Saudi Arabia 🇸🇦</string>
+            <key>code</key>
+            <string>SA</string>
+            <key>mcc</key>
+            <string>420</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Egypt 🇪🇬</string>
+            <key>code</key>
+            <string>EG</string>
+            <key>mcc</key>
+            <string>602</string>
+            <key>mnc</key>
+            <string>01</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Lebanon 🇱🇧</string>
+            <key>code</key>
+            <string>LB</string>
+            <key>mcc</key>
+            <string>415</string>
+            <key>mnc</key>
+            <string>03</string>
           </dict>
           <dict>
             <key>area</key>
