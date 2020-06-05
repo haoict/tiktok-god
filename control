@@ -1,7 +1,7 @@
 Package: com.haoict.tiktokgod
 Name: TikTok God
 Depends: mobilesubstrate, preferenceloader, com.haoict.libhdev (>= 2.0.0), firmware (>= 10)
-Version: 1.5.0
+Version: 1.6.0
 Architecture: iphoneos-arm
 Description: The best tweak for TikTok app.
  The best tweak for TikTok app.
@@ -13,6 +13,7 @@ Description: The best tweak for TikTok app.
  - Download without watermark (long press on video to download)
  - Auto scroll to next video
  - Change Region (may not work for iPad and some devices)
+ - Show progress bar (for fast forward or rewind video)
  - Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
  - Support latest TikTok version (If it doesn't work, you should update the app to latest version >= 15.9.0)
  . 

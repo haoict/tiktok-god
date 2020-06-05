@@ -11,6 +11,7 @@
 @interface AWEVideoModel : NSObject
 @property(readonly, nonatomic) AWEURLModel* playURL;
 @property(readonly, nonatomic) AWEURLModel* downloadURL;
+@property(readonly, nonatomic) NSNumber *duration;
 @end
 
 @interface AWEAwemeModel : NSObject
@@ -31,4 +32,19 @@
 @property(retain, nonatomic) AWEAwemeModel *model;
 - (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)dismissActionsWithExecutingBlock;
+@end
+
+@interface AWEPlayVideoViewController : UIViewController
+- (void)setPlayerSeekTime:(double)arg1 completion:(id)arg2;
+@end
+
+@interface AWEAwemePlayInteractionViewController : UIViewController
+@property(retain, nonatomic) AWEAwemeModel *model;
+@property(nonatomic) AWEPlayVideoViewController *videoDelegate;
+@property (nonatomic, retain) UISlider *slider; // new property
+@property (nonatomic, retain) NSTimer *sliderTimer; // new property
+- (double)currentPlayerPlaybackTime;
+- (void)onSliderValChanged:(UISlider *)slider forEvent:(UIEvent *)event; // new
+- (void)timerAction:(NSTimer *)timer; // new
+- (void)showNewStyleProgressSlider;
 @end
