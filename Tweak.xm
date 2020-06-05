@@ -8,6 +8,7 @@ BOOL unlimitedDownload;
 BOOL downloadWithoutWatermark;
 BOOL autoPlayNextVideo;
 BOOL changeRegion;
+BOOL showProgressBar;
 NSDictionary *region;
 
 static void reloadPrefs() {
@@ -19,6 +20,7 @@ static void reloadPrefs() {
   autoPlayNextVideo = [[settings objectForKey:@"autoPlayNextVideo"] ?: @(NO) boolValue];
   changeRegion = [[settings objectForKey:@"changeRegion"] ?: @(NO) boolValue];
   region = [settings objectForKey:@"region"] ?: [@{} mutableCopy];
+  showProgressBar = [[settings objectForKey:@"showProgressBar"] ?: @(NO) boolValue];
 }
 
 %group CoreLogic
@@ -89,6 +91,110 @@ static void reloadPrefs() {
   %end
 %end
 
+%group ShowProgressBar
+  %hook AWEAwemePlayInteractionViewController
+    %property (nonatomic, retain) NSTimer *sliderTimer;
+    %property (nonatomic, retain) UISlider *slider;
+
+    - (void)viewDidLoad {
+      %orig;
+
+      // make circle thumb for slider
+      CGFloat radius = 16.0;
+      UIView *thumbView = [[UIView alloc] initWithFrame:CGRectMake(0, radius / 2, radius, radius)];
+      thumbView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.9];
+      thumbView.layer.borderWidth = 0.4;
+      thumbView.layer.borderColor = [UIColor whiteColor].CGColor;
+      thumbView.layer.cornerRadius = radius / 2;
+      UIGraphicsBeginImageContextWithOptions(thumbView.bounds.size, NO, 0.0);
+      [thumbView.layer renderInContext:UIGraphicsGetCurrentContext()];
+      UIImage *thumbImg = UIGraphicsGetImageFromCurrentImageContext();
+      UIGraphicsEndImageContext();
+
+      // detect iphone with notch
+      double yPadding = 54.0;
+      if (@available( iOS 11.0, * )) {
+        if ([[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom > 0) {
+          yPadding = 96.0;
+        }
+      }
+
+      // create slider
+      CGRect frame = CGRectMake(0.0, self.view.frame.size.height - yPadding, self.view.frame.size.width, 10.0);
+      self.slider = [[UISlider alloc] initWithFrame:frame];
+      [self.slider addTarget:self action:@selector(onSliderValChanged:forEvent:) forControlEvents:UIControlEventValueChanged];
+      [self.slider setBackgroundColor:[UIColor clearColor]];
+      self.slider.minimumValue = 0.0;
+      self.slider.maximumValue = 100.0;
+      self.slider.continuous = YES;
+      self.slider.value = 0.0;
+      self.slider.minimumTrackTintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+      self.slider.maximumTrackTintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
+      [self.slider setThumbImage:thumbImg forState:UIControlStateNormal];
+      self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:self.slider repeats:TRUE];
+      [self.view addSubview:self.slider];
+    }
+
+    %new
+    - (void)onSliderValChanged:(UISlider *)slider forEvent:(UIEvent *)event {
+      UITouch *touchEvent = [[event allTouches] anyObject];
+      switch (touchEvent.phase) {
+        case UITouchPhaseBegan: {
+          if (self.sliderTimer != nil) {
+            [self.sliderTimer invalidate];
+            self.sliderTimer = nil;
+          }
+          break;
+        }
+        case UITouchPhaseMoved: {
+          break;
+        }
+        case UITouchPhaseEnded: {
+          double duration = [self.model.video.duration doubleValue] / 1000.0 - 2.3;
+          double seekTime = slider.value / 100.0 * (duration);
+          [self.videoDelegate setPlayerSeekTime:seekTime completion:nil];
+          if (self.sliderTimer == nil) {
+            self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:slider repeats:TRUE];
+          }
+          break;
+        }
+        case UITouchPhaseStationary: {
+          if (self.sliderTimer == nil) {
+            self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:slider repeats:TRUE];
+          }
+        }
+        default:
+          break;
+      }
+    }
+
+    %new
+    - (void)timerAction:(NSTimer *)timer {
+      UISlider *slider = (UISlider *)timer.userInfo;
+      double percent = [self currentPlayerPlaybackTime] / ([self.model.video.duration doubleValue] / 1000.0 - 2.3) * 100.0;
+      [slider setValue:percent animated:TRUE];
+    }
+
+    - (void)showDislikeOnVideo {
+      if (self.sliderTimer == nil) {
+        self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:self.slider repeats:TRUE];
+      }
+      %orig;
+    }
+  %end
+
+  %hook AWEAwemeBaseViewController
+    - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(UITouch *)arg2 {
+      if ([arg2.view isKindOfClass:[UISlider class]]) {
+        // prevent recognizing touches on the slider
+        // currently not working??
+        return NO;
+      }
+      return YES;
+    }
+  %end
+%end
+
 
 /**
  * Constructor
@@ -98,5 +204,9 @@ static void reloadPrefs() {
   reloadPrefs();
 
   %init(CoreLogic);
+
+  if (showProgressBar) {
+    %init(ShowProgressBar);
+  }
 }
 

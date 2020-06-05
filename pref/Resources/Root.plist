@@ -540,6 +540,25 @@
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
 
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HPSSwitchCell</string>
+        <key>default</key>
+        <false />
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>showProgressBar</string>
+        <key>label</key>
+        <string>SHOW_PROGRESS_BAR</string>
+        <key>subtitle</key>
+        <string>FOR_FAST_FORWARD_OR_REWIND_VIDEO</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
       <!-- Reset Settings -->
       <dict>
         <key>cell</key>
