@@ -68,6 +68,30 @@ static void reloadPrefs() {
     }
   %end
 
+  %hook TIKTOKAwemePlayDislikeViewController
+    - (BOOL)shouldShowDownload:(id)arg1 {
+      return unlimitedDownload ? TRUE : %orig;
+    }
+
+    - (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+      AWEAwemeDislikeNewReasonTableViewCell *orig = %orig;
+      if (downloadWithoutWatermark && orig.model.dislikeType == 1) {
+        orig.titleLabel.text = [NSString stringWithFormat:@"%@%@", orig.titleLabel.text, @" - No Watermark"];
+      }
+      return orig;
+    }
+
+    - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+      AWEAwemeDislikeNewReasonTableViewCell *cell = [self tableView:arg1 cellForRowAtIndexPath:indexPath];
+      if (downloadWithoutWatermark && cell.model.dislikeType == 1) {
+        [HDownloadMedia checkPermissionToPhotosAndDownload:self.model.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
+        [self dismissActionsWithExecutingBlock];
+        return;
+      }
+      %orig;
+    }
+  %end
+
   // Thanks chenxk-j for this
   // https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23
   %hook CTCarrier

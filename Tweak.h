@@ -20,6 +20,7 @@
 @end
 
 @interface AWEAwemeDislikeNewReasonModel : NSObject
+@property(retain, nonatomic) NSString *title;
 @property(nonatomic) long long dislikeType;
 @end
 
@@ -29,6 +30,12 @@
 @end
 
 @interface AWEAwemePlayDislikeViewController : UIViewController
+@property(retain, nonatomic) AWEAwemeModel *model;
+- (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)dismissActionsWithExecutingBlock;
+@end
+
+@interface TIKTOKAwemePlayDislikeViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
 - (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)dismissActionsWithExecutingBlock;

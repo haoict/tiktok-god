@@ -1,7 +1,7 @@
 Package: com.haoict.tiktokgod
 Name: TikTok God
 Depends: mobilesubstrate, preferenceloader, com.haoict.libhdev (>= 2.0.0), firmware (>= 10)
-Version: 1.6.1
+Version: 1.6.2
 Architecture: iphoneos-arm
 Description: The best tweak for TikTok app.
  The best tweak for TikTok app.
@@ -16,6 +16,8 @@ Description: The best tweak for TikTok app.
  - Show progress bar (for fast forward or rewind video)
  - Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
  - Support latest TikTok version (If it doesn't work, you should update the app to latest version >= 15.9.0)
+ . 
+ I collect uuid for better support and statistic purpose
  . 
  I work very hard to make good, free and open source tweaks for everyone
  If you want to support, you can buy me a coffee at https://www.paypal.me/haoict
