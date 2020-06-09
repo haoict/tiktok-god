@@ -17,8 +17,10 @@
   "VIEW_TIKTOK_FROM_ANOTHER_COUNTRY" = "Xem TikTok từ quốc gia khác";
   "MAY_NOT_WORK_FOR_IPAD_AND_SOME_DEVICES" = "(iPad và một số máy có thể không được)";
   "SELECT_COUNTRY" = "Chọn quốc gia";
-  "SHOW_PROGRESS_BAR" = "Hiện thanh tiến trình (beta)";
+  "SHOW_PROGRESS_BAR" = "Hiện thanh tiến trình";
   "FOR_FAST_FORWARD_OR_REWIND_VIDEO" = "Dùng để tua nhanh hoặc tua ngược video";
+  "CAN_HIDE_UI" = "Có thể ẩn UI";
+  "ENABLE_SHOW_HIDE_UI_BUTTON" = "Mở chức nút năng ẩn/hiện UI";
   "MORE_FEATURES_COMMING_SOON" = "Nhiều tính năng mới sẽ cập nhật sau";
   "OTHER_PREFERENCES" = "Tùy chỉnh phụ";
   "RESET_SETTINGS" = "Đặt lại tùy chỉnh";

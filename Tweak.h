@@ -45,13 +45,35 @@
 - (void)setPlayerSeekTime:(double)arg1 completion:(id)arg2;
 @end
 
+@interface AWEFeedContainerViewController : UIViewController
+@property(nonatomic) BOOL isUIHidden; // new property
+- (void)setAccessoriesHidden:(BOOL)arg1;
++ (AWEFeedContainerViewController *)sharedInstance; // new
+@end
+
 @interface AWEAwemePlayInteractionViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
 @property(nonatomic) AWEPlayVideoViewController *videoDelegate;
-@property (nonatomic, retain) UISlider *slider; // new property
-@property (nonatomic, retain) NSTimer *sliderTimer; // new property
+@property(nonatomic, retain) UISlider *slider; // new property
+@property(nonatomic, retain) NSTimer *sliderTimer; // new property
+@property(nonatomic, retain) UIButton *hideUIButton; // new property
 - (double)currentPlayerPlaybackTime;
+- (void)setHide:(BOOL)arg1;
 - (void)onSliderValChanged:(UISlider *)slider forEvent:(UIEvent *)event; // new
 - (void)timerAction:(NSTimer *)timer; // new
-- (void)showNewStyleProgressSlider;
+- (void)hideUIButtonPressed; // new
+- (void)updateShowOrHideUI; // new
+@end
+
+@interface AWEAwemePlayInteractionPresenter : NSObject
+@property(retain, nonatomic) AWEAwemeModel *model;
+@property(nonatomic) AWEAwemePlayInteractionViewController *viewController; 
+@end
+
+@interface AWEMediaDownloadOptions : NSObject
+@property(retain, nonatomic) AWEAwemeModel *awemeModel;
+@end
+
+@interface AWEDownloadShareChannel : NSObject
+@property(retain, nonatomic) AWEMediaDownloadOptions *downloadOptions;
 @end

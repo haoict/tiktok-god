@@ -11,6 +11,7 @@ Best free & open source tweak for TikTok app on iOS 10 - 13
 - Auto scroll to next video
 - Change Region (may not work for iPad and some devices)
 - Show progress bar (for fast forward or rewind video)
+- Can hide UI (view video in full screen)
 - Support iOS 10 (not tested) - 11 (tested) - 12 (tested) - 13 (tested)
 - Support latest TikTok version (If it doesn't work, you should update the app to latest version >= 15.9.0)
 

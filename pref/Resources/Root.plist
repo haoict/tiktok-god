@@ -159,7 +159,7 @@
           <string>Laos 🇱🇦</string>
           <string>Malaysia 🇲🇾</string>
           <string>Thailand 🇹🇭</string>
-          <string>Singapore 🇰🇭</string>
+          <string>Singapore 🇸🇬</string>
           <string>Indonesia 🇮🇩</string>
           <string>Vietnam 🇻🇳</string>
           <string>Anguilla 🇦🇮</string>
@@ -325,7 +325,7 @@
           </dict>
           <dict>
             <key>area</key>
-            <string>Singapore 🇰🇭</string>
+            <string>Singapore 🇸🇬</string>
             <key>code</key>
             <string>SG</string>
             <key>mcc</key>
@@ -555,6 +555,25 @@
         <string>SHOW_PROGRESS_BAR</string>
         <key>subtitle</key>
         <string>FOR_FAST_FORWARD_OR_REWIND_VIDEO</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HPSSwitchCell</string>
+        <key>default</key>
+        <true />
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>canHideUI</string>
+        <key>label</key>
+        <string>CAN_HIDE_UI</string>
+        <key>subtitle</key>
+        <string>ENABLE_SHOW_HIDE_UI_BUTTON</string>
         <key>PostNotification</key>
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
