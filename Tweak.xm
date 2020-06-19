@@ -117,9 +117,19 @@ static void reloadPrefs() {
     %property (nonatomic, retain) NSTimer *sliderTimer;
     %property (nonatomic, retain) UISlider *slider;
     %property (nonatomic, retain) UIButton *hideUIButton;
+    %property (nonatomic, retain) UIButton *hDownloadButton;
 
     - (void)viewDidLoad {
       %orig;
+
+      if (downloadWithoutWatermark) {
+        self.hDownloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.hDownloadButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [self.hDownloadButton addTarget:self action:@selector(hDownloadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.hDownloadButton setTitle:@"Download" forState:UIControlStateNormal];
+        self.hDownloadButton.frame = CGRectMake(self.view.frame.size.width - 90 - 5, 125.0, 90.0, 40.0);
+        [self.view addSubview:self.hDownloadButton];
+      }
 
       if (showProgressBar) {
         // make circle thumb for slider
@@ -162,9 +172,10 @@ static void reloadPrefs() {
         // add hide/show ui button
         AWEFeedContainerViewController *afcVC = (AWEFeedContainerViewController *)[%c(AWEFeedContainerViewController) sharedInstance];
         self.hideUIButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.hideUIButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [self.hideUIButton addTarget:self action:@selector(hideUIButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
-        self.hideUIButton.frame = CGRectMake(self.view.frame.size.width - 70 - 10.66, 90.0, 70.0, 40.0);
+        self.hideUIButton.frame = CGRectMake(self.view.frame.size.width - 70 - 5, 90.0, 70.0, 40.0);
         [self.view addSubview:self.hideUIButton];
       }
     }
@@ -172,7 +183,7 @@ static void reloadPrefs() {
     - (void)playBarrage {
       %orig;
       if (canHideUI) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
           [self updateShowOrHideUI];
         });
       }
@@ -226,10 +237,20 @@ static void reloadPrefs() {
     }
 
     %new
+    - (void)hDownloadButtonPressed:(UIButton *)sender {
+      NSString *videoURLString = self.model.video.playURL.originURLList.firstObject;
+      if ([videoURLString containsString:@".m3u8"]) {
+        [HCommon showAlertMessage:@"This video format is not supported (.m3u8 file extension)" withTitle:@"Not supported" viewController:nil];
+      }
+      [[[HDownloadMediaWithProgress alloc] init] checkPermissionToPhotosAndDownload:videoURLString appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok" viewController:self];
+    }
+
+    %new
     - (void)updateShowOrHideUI {
       AWEFeedContainerViewController *afcVC = (AWEFeedContainerViewController *)[%c(AWEFeedContainerViewController) sharedInstance];
       [self setHide:afcVC.isUIHidden];
       [self.slider setHidden:afcVC.isUIHidden];
+      [self.hDownloadButton setHidden:afcVC.isUIHidden];
       [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
       [afcVC setAccessoriesHidden:afcVC.isUIHidden];
     }
@@ -259,12 +280,21 @@ static void reloadPrefs() {
 
   %hook AWEDownloadShareChannel
     - (void)startDownloadingWithCompletion:(id)arg1 {
-      [HDownloadMedia checkPermissionToPhotosAndDownload:self.downloadOptions.awemeModel.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
+      %orig;
+      // if (!downloadWithoutWatermark) {
+      //   %orig;
+      //   return;
+      // }
+      // [HDownloadMedia checkPermissionToPhotosAndDownload:self.downloadOptions.awemeModel.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
     }
   %end
 
   %hook AWEAwemePlayInteractionPresenter
     - (void)longPressDownload {
+      if (!downloadWithoutWatermark) {
+        %orig;
+        return;
+      }
       [HDownloadMedia checkPermissionToPhotosAndDownload:self.model.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
       // [[[HDownloadMediaWithProgress alloc] init] checkPermissionToPhotosAndDownload:self.model.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok" viewController:self.viewController];
     }

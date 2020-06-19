@@ -7,7 +7,7 @@ Best free & open source tweak for TikTok app on iOS 10 - 13
 ## Features
 - Remove Ads
 - Enable download for all videos
-- Download without watermark (long press on video to download)
+- Download without watermark
 - Auto scroll to next video
 - Change Region (may not work for iPad and some devices)
 - Show progress bar (for fast forward or rewind video)

@@ -10,7 +10,7 @@
   "UNLIMITED_DOWNLOAD" = "Download không giới hạn";
   "CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO" = "Có thể download video không cho tải";
   "DOWNLOAD_WITHOUT_WATERMARK" = "Download không logo (watermark)";
-  "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Nhấn và giữ video để hiện nút download";
+  "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Ấn nút Download ở góc trên bên phải";
   "AUTO_PLAY_NEXT_VIDEO" = "Tự động chơi video tiếp theo";
   "FINGER_FREE" = "Rảnh tay rồi, hehe!";
   "CHANGE_REGION" = "Thay đổi khu vực";

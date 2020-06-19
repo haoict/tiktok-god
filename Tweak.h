@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <libhdev/HUtilities/HDownloadMedia.h>
+#import <libhdev/HUtilities/HDownloadMediaWithProgress.h>
 
 #define PLIST_PATH "/var/mobile/Library/Preferences/com.haoict.tiktokgodpref.plist"
 #define PREF_CHANGED_NOTIF "com.haoict.tiktokgodpref/PrefChanged"
@@ -57,12 +58,14 @@
 @property(nonatomic, retain) UISlider *slider; // new property
 @property(nonatomic, retain) NSTimer *sliderTimer; // new property
 @property(nonatomic, retain) UIButton *hideUIButton; // new property
+@property(nonatomic, retain) UIButton *hDownloadButton; // new property
 - (double)currentPlayerPlaybackTime;
 - (void)setHide:(BOOL)arg1;
 - (void)onSliderValChanged:(UISlider *)slider forEvent:(UIEvent *)event; // new
 - (void)timerAction:(NSTimer *)timer; // new
 - (void)hideUIButtonPressed; // new
 - (void)updateShowOrHideUI; // new
+- (void)hDownloadButtonPressed; // new
 @end
 
 @interface AWEAwemePlayInteractionPresenter : NSObject
