@@ -585,11 +585,31 @@
         <key>label</key>
         <string>OTHER_PREFERENCES</string>
       </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HPSSwitchCell</string>
+        <key>default</key>
+        <false/>
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>showAdditionalDownloadButton</string>
+        <key>label</key>
+        <string>SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
       <dict>
         <key>cell</key>
         <string>PSLinkCell</string>
         <key>cellClass</key>
         <string>HPSLinkCell</string>
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
         <key>label</key>
         <string>RESET_SETTINGS</string>
         <key>action</key>

@@ -10,7 +10,7 @@
   "UNLIMITED_DOWNLOAD" = "Download không giới hạn";
   "CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO" = "Có thể download video không cho tải";
   "DOWNLOAD_WITHOUT_WATERMARK" = "Download không logo (watermark)";
-  "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Ấn nút Download ở góc trên bên phải";
+  "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Nhấn và giữ video để hiện nút download";
   "AUTO_PLAY_NEXT_VIDEO" = "Tự động chơi video tiếp theo";
   "FINGER_FREE" = "Rảnh tay rồi, hehe!";
   "CHANGE_REGION" = "Thay đổi khu vực";
@@ -23,6 +23,7 @@
   "ENABLE_SHOW_HIDE_UI_BUTTON" = "Mở chức nút năng ẩn/hiện UI";
   "MORE_FEATURES_COMMING_SOON" = "Nhiều tính năng mới sẽ cập nhật sau";
   "OTHER_PREFERENCES" = "Tùy chỉnh phụ";
+  "SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON" = "Hiện nút download ở góc trên bên phải";
   "RESET_SETTINGS" = "Đặt lại tùy chỉnh";
   "SUPPORT_ME" = "Hỗ trợ tôi";
   "DONATION" = "Ủng hộ 💰";

@@ -10,6 +10,7 @@ BOOL autoPlayNextVideo;
 BOOL changeRegion;
 BOOL showProgressBar;
 BOOL canHideUI;
+BOOL showAdditionalDownloadButton;
 NSDictionary *region;
 
 static void reloadPrefs() {
@@ -23,6 +24,7 @@ static void reloadPrefs() {
   region = [settings objectForKey:@"region"] ?: [@{} mutableCopy];
   showProgressBar = [[settings objectForKey:@"showProgressBar"] ?: @(NO) boolValue];
   canHideUI = [[settings objectForKey:@"canHideUI"] ?: @(YES) boolValue];
+  showAdditionalDownloadButton = [[settings objectForKey:@"showAdditionalDownloadButton"] ?: @(NO) boolValue];
 }
 
 %group CoreLogic
@@ -122,7 +124,7 @@ static void reloadPrefs() {
     - (void)viewDidLoad {
       %orig;
 
-      if (downloadWithoutWatermark) {
+      if (downloadWithoutWatermark && showAdditionalDownloadButton) {
         self.hDownloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.hDownloadButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [self.hDownloadButton addTarget:self action:@selector(hDownloadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -169,7 +171,6 @@ static void reloadPrefs() {
       }
 
       if (canHideUI) {
-        // add hide/show ui button
         AWEFeedContainerViewController *afcVC = (AWEFeedContainerViewController *)[%c(AWEFeedContainerViewController) sharedInstance];
         self.hideUIButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.hideUIButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
@@ -280,12 +281,16 @@ static void reloadPrefs() {
 
   %hook AWEDownloadShareChannel
     - (void)startDownloadingWithCompletion:(id)arg1 {
-      %orig;
-      // if (!downloadWithoutWatermark) {
-      //   %orig;
-      //   return;
-      // }
-      // [HDownloadMedia checkPermissionToPhotosAndDownload:self.downloadOptions.awemeModel.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
+      if (!downloadWithoutWatermark) {
+        %orig;
+        return;
+      }
+      NSString *videoURLString = self.downloadOptions.awemeModel.video.playURL.originURLList.firstObject;
+      if ([videoURLString containsString:@".m3u8"]) {
+        [HCommon showAlertMessage:@"This video format is not supported (.m3u8 file extension)" withTitle:@"Not supported" viewController:nil];
+        %orig;
+      }
+      [HDownloadMedia checkPermissionToPhotosAndDownload:videoURLString appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
     }
   %end
 
@@ -295,8 +300,12 @@ static void reloadPrefs() {
         %orig;
         return;
       }
-      [HDownloadMedia checkPermissionToPhotosAndDownload:self.model.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
-      // [[[HDownloadMediaWithProgress alloc] init] checkPermissionToPhotosAndDownload:self.model.video.playURL.originURLList.firstObject appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok" viewController:self.viewController];
+      NSString *videoURLString = self.model.video.playURL.originURLList.firstObject;
+      if ([videoURLString containsString:@".m3u8"]) {
+        [HCommon showAlertMessage:@"This video format is not supported (.m3u8 file extension)" withTitle:@"Not supported" viewController:nil];
+        %orig;
+      }
+      [[[HDownloadMediaWithProgress alloc] init] checkPermissionToPhotosAndDownload:videoURLString appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok" viewController:self.viewController];
     }
   %end
 %end

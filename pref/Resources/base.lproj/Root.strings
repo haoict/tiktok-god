@@ -10,7 +10,7 @@
   "UNLIMITED_DOWNLOAD" = "Unlimited Download";
   "CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO" = "Can download undownloadable videos";
   "DOWNLOAD_WITHOUT_WATERMARK" = "Download Without Watermark";
-  "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Press Download at top right corner";
+  "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Press and hold video to show download butto";
   "AUTO_PLAY_NEXT_VIDEO" = "Auto Play Next Video";
   "FINGER_FREE" = "Finger free, yeah!";
   "CHANGE_REGION" = "Change Region";
@@ -23,6 +23,7 @@
   "ENABLE_SHOW_HIDE_UI_BUTTON" = "Enable Show/Hide UI button";
   "MORE_FEATURES_COMMING_SOON" = "More Features Comming Soon";
   "OTHER_PREFERENCES" = "Other Preferences";
+  "SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON" = "Show Top Right Corner Download Button";
   "RESET_SETTINGS" = "Reset Settings";
   "SUPPORT_ME" = "Support Me";
   "DONATION" = "Donation 💰";
