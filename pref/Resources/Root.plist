@@ -17,7 +17,7 @@
         <key>cell</key>
         <string>PSGroupCell</string>
         <key>headerCellClass</key>
-        <string>HPSHeaderCell</string>
+        <string>HPSHeaderTextCell</string>
         <key>label</key>
         <string>TikTok God</string>
         <key>subtitle</key>
@@ -142,7 +142,7 @@
         <key>label</key>
         <string>SELECT_COUNTRY</string>
         <key>detail</key>
-        <string>PSListItemsController</string>
+        <string>HPSListItemsController</string>
         <key>validTitles</key>
         <array>
           <string>Taiwan 🇹🇼</string>

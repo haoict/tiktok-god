@@ -1,8 +1,9 @@
+/**
+ * @author Hao Nguyen
+ */
+
 #include "Tweak.h"
 
-/**
- * Load Preferences
- */
 BOOL noads;
 BOOL unlimitedDownload;
 BOOL downloadWithoutWatermark;
@@ -76,9 +77,9 @@ static void reloadPrefs() {
     }
   %end
 
-  // Thanks chenxk-j for this
-  // https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23
   %hook CTCarrier
+    // Thanks chenxk-j for this
+    // https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23
     - (NSString *)mobileCountryCode {
       return (changeRegion && region[@"mcc"] != nil) ? region[@"mcc"] : %orig;
     }
@@ -128,8 +129,10 @@ static void reloadPrefs() {
         self.hDownloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.hDownloadButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [self.hDownloadButton addTarget:self action:@selector(hDownloadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.hDownloadButton setTitle:@"Download" forState:UIControlStateNormal];
-        self.hDownloadButton.frame = CGRectMake(self.view.frame.size.width - 90 - 5, 125.0, 90.0, 40.0);
+        // [self.hDownloadButton setTitle:@"Download" forState:UIControlStateNormal];
+        [self.hDownloadButton setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/tiktokgod/download.png"] forState:UIControlStateNormal];
+        self.hDownloadButton.imageEdgeInsets = UIEdgeInsetsMake(3.0, 3.0, 3.0, 3.0);
+        self.hDownloadButton.frame = CGRectMake(self.view.frame.size.width - 30 - 10, 135.0, 30.0, 30.0);
         [self.view addSubview:self.hDownloadButton];
       }
 
@@ -175,16 +178,19 @@ static void reloadPrefs() {
         self.hideUIButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.hideUIButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [self.hideUIButton addTarget:self action:@selector(hideUIButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
-        self.hideUIButton.frame = CGRectMake(self.view.frame.size.width - 70 - 5, 90.0, 70.0, 40.0);
+        // [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
+        [self.hideUIButton setImage:[UIImage imageWithContentsOfFile:afcVC.isUIHidden?@"/Library/Application Support/tiktokgod/showui.png":@"/Library/Application Support/tiktokgod/hideui.png"] forState:UIControlStateNormal];
+        self.hideUIButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.hideUIButton.imageEdgeInsets = UIEdgeInsetsMake(3.0, 3.0, 3.0, 3.0);
+        self.hideUIButton.frame = CGRectMake(self.view.frame.size.width - 30 - 10, 100.0, 30.0, 30.0);
         [self.view addSubview:self.hideUIButton];
       }
     }
 
-    - (void)playBarrage {
+    - (void)stopLoadingAnimation {
       %orig;
       if (canHideUI) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
           [self updateShowOrHideUI];
         });
       }
@@ -252,7 +258,8 @@ static void reloadPrefs() {
       [self setHide:afcVC.isUIHidden];
       [self.slider setHidden:afcVC.isUIHidden];
       [self.hDownloadButton setHidden:afcVC.isUIHidden];
-      [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
+      // [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
+      [self.hideUIButton setImage:[UIImage imageWithContentsOfFile:afcVC.isUIHidden?@"/Library/Application Support/tiktokgod/showui.png":@"/Library/Application Support/tiktokgod/hideui.png"] forState:UIControlStateNormal];
       [afcVC setAccessoriesHidden:afcVC.isUIHidden];
     }
 
@@ -310,10 +317,6 @@ static void reloadPrefs() {
   %end
 %end
 
-
-/**
- * Constructor
- */
 %ctor {
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) reloadPrefs, CFSTR(PREF_CHANGED_NOTIF), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
   reloadPrefs();
