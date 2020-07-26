@@ -149,16 +149,8 @@ static void reloadPrefs() {
         UIImage *thumbImg = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
 
-        // detect iphone with notch
-        double yPadding = 54.0;
-        if (@available( iOS 11.0, * )) {
-          if ([[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom > 0) {
-            yPadding = 96.0;
-          }
-        }
-
         // create slider
-        CGRect frame = CGRectMake(0.0, self.view.frame.size.height - yPadding, self.view.frame.size.width, 10.0);
+        CGRect frame = CGRectMake(0.0, self.view.frame.size.height - ([HCommon isNotch] ? 96.0 : 54.0), self.view.frame.size.width, 10.0);
         self.slider = [[UISlider alloc] initWithFrame:frame];
         [self.slider addTarget:self action:@selector(onSliderValChanged:forEvent:) forControlEvents:UIControlEventValueChanged];
         [self.slider setBackgroundColor:[UIColor clearColor]];

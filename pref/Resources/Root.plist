@@ -13,21 +13,6 @@
         <string>/Library/PreferenceBundles/TTGPref.bundle/Banner.jpg</string>
       </dict>
 
-      <!-- <dict>
-        <key>cell</key>
-        <string>PSGroupCell</string>
-        <key>headerCellClass</key>
-        <string>HPSHeaderTextCell</string>
-        <key>label</key>
-        <string>TikTok God</string>
-        <key>subtitle</key>
-        <array>
-          <string>By @haoict</string>
-          <string>Free and Open Source!</string>
-          <string>Made with love</string>
-        </array>
-      </dict> -->
-
       <dict>
         <key>cell</key>
         <string>PSGroupCell</string>
