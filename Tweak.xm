@@ -252,7 +252,9 @@ static void reloadPrefs() {
       [self.hDownloadButton setHidden:afcVC.isUIHidden];
       // [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
       [self.hideUIButton setImage:[UIImage imageWithContentsOfFile:afcVC.isUIHidden?@"/Library/Application Support/tiktokgod/showui.png":@"/Library/Application Support/tiktokgod/hideui.png"] forState:UIControlStateNormal];
-      [afcVC setAccessoriesHidden:afcVC.isUIHidden];
+      if ([self.parentViewController isKindOfClass:%c(AWEFeedCellViewController)]) {
+        [afcVC setAccessoriesHidden:afcVC.isUIHidden];
+      }
     }
 
     - (void)showDislikeOnVideo {
