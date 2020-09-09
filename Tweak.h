@@ -46,6 +46,9 @@
 - (void)setPlayerSeekTime:(double)arg1 completion:(id)arg2;
 @end
 
+@interface AWEAwemePlayVideoViewController : AWEPlayVideoViewController
+@end
+
 @interface AWEFeedContainerViewController : UIViewController
 @property(nonatomic) BOOL isUIHidden; // new property
 - (void)setAccessoriesHidden:(BOOL)arg1;
@@ -54,7 +57,7 @@
 
 @interface AWEAwemePlayInteractionViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic) AWEPlayVideoViewController *videoDelegate;
+@property(nonatomic) AWEAwemePlayVideoViewController *videoDelegate;
 @property(nonatomic, retain) UISlider *slider; // new property
 @property(nonatomic, retain) NSTimer *sliderTimer; // new property
 @property(nonatomic, retain) UIButton *hideUIButton; // new property
@@ -79,4 +82,8 @@
 
 @interface AWEDownloadShareChannel : NSObject
 @property(retain, nonatomic) AWEMediaDownloadOptions *downloadOptions;
+@end
+
+@interface AWEFeedTableViewController : UIViewController
+- (void)scrollToNextVideo;
 @end

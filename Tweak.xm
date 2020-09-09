@@ -99,6 +99,19 @@ static void reloadPrefs() {
     }
   %end
 
+  %hook AWEAwemePlayVideoViewController
+    - (void)playerWillLoopPlaying:(id)arg1 {
+      // For Tiktok 17.x.x
+      if (autoPlayNextVideo) {
+        if ([self.parentViewController.parentViewController isKindOfClass:%c(AWEFeedTableViewController)]) {
+          [((AWEFeedTableViewController *)self.parentViewController.parentViewController) scrollToNextVideo];
+          return;
+        }
+      }
+      %orig;
+    }
+  %end
+
   %hook AWEFeedContainerViewController
     static AWEFeedContainerViewController *__weak sharedInstance;
     %property (nonatomic, assign) BOOL isUIHidden;
