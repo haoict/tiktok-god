@@ -1,5 +1,14 @@
 ---
 name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: ''
+assignees: ''
+
+---
+
+---
+name: Bug report
 about: Report a bug
 title: ''
 labels: bug
@@ -15,9 +24,4 @@ assignees: ''
 
 ### Bug Report
 
-Here, you can provide a description of the bug. Some tips:
-
-- Providing steps to reproduce, screenshot or screen recording are always helpful!
-
-
-This template is a suggestion. You may format your issue however you want, but generally you should at least include your iOS version and FLEX version.
+Note: Providing steps to reproduce, screenshot or screen recording are always helpful!
