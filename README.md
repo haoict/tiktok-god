@@ -1,6 +1,6 @@
 # TikTok God
 
-Best free & open source tweak for TikTok app on iOS 10 - 13  
+Best free & open source tweak for TikTok app on iOS 10 - 14  
 
 <img src="https://haoict.github.io/cydia/images/tiktokgodbanner.jpg" alt="TikTok God" width="414"/>
 

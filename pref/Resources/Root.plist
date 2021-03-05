@@ -33,27 +33,6 @@
         <string>noads</string>
         <key>label</key>
         <string>NO_ADS</string>
-        <key>subtitle</key>
-        <string>REMOVE_SPONSORED_VIDEO</string>
-        <key>PostNotification</key>
-        <string>com.haoict.tiktokgodpref/PrefChanged</string>
-      </dict>
-
-      <dict>
-        <key>cell</key>
-        <string>PSSwitchCell</string>
-        <key>cellClass</key>
-        <string>HPSSwitchCell</string>
-        <key>default</key>
-        <true/>
-        <key>defaults</key>
-        <string>com.haoict.tiktokgodpref</string>
-        <key>key</key>
-        <string>unlimitedDownload</string>
-        <key>label</key>
-        <string>UNLIMITED_DOWNLOAD</string>
-        <key>subtitle</key>
-        <string>CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO</string>
         <key>PostNotification</key>
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
@@ -71,8 +50,6 @@
         <string>downloadWithoutWatermark</string>
         <key>label</key>
         <string>DOWNLOAD_WITHOUT_WATERMARK</string>
-        <key>subtitle</key>
-        <string>PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON</string>
         <key>PostNotification</key>
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
@@ -90,8 +67,44 @@
         <string>autoPlayNextVideo</string>
         <key>label</key>
         <string>AUTO_PLAY_NEXT_VIDEO</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HPSSwitchCell</string>
+        <key>default</key>
+        <false />
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>showProgressBar</string>
+        <key>label</key>
+        <string>SHOW_PROGRESS_BAR</string>
         <key>subtitle</key>
-        <string>FINGER_FREE</string>
+        <string>FOR_FAST_FORWARD_OR_REWIND_VIDEO</string>
+        <key>PostNotification</key>
+        <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSSwitchCell</string>
+        <key>cellClass</key>
+        <string>HPSSwitchCell</string>
+        <key>default</key>
+        <true />
+        <key>defaults</key>
+        <string>com.haoict.tiktokgodpref</string>
+        <key>key</key>
+        <string>canHideUI</string>
+        <key>label</key>
+        <string>CAN_HIDE_UI</string>
+        <key>subtitle</key>
+        <string>ENABLE_SHOW_HIDE_UI_BUTTON</string>
         <key>PostNotification</key>
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
@@ -525,67 +538,12 @@
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
 
-      <dict>
-        <key>cell</key>
-        <string>PSSwitchCell</string>
-        <key>cellClass</key>
-        <string>HPSSwitchCell</string>
-        <key>default</key>
-        <false />
-        <key>defaults</key>
-        <string>com.haoict.tiktokgodpref</string>
-        <key>key</key>
-        <string>showProgressBar</string>
-        <key>label</key>
-        <string>SHOW_PROGRESS_BAR</string>
-        <key>subtitle</key>
-        <string>FOR_FAST_FORWARD_OR_REWIND_VIDEO</string>
-        <key>PostNotification</key>
-        <string>com.haoict.tiktokgodpref/PrefChanged</string>
-      </dict>
-
-      <dict>
-        <key>cell</key>
-        <string>PSSwitchCell</string>
-        <key>cellClass</key>
-        <string>HPSSwitchCell</string>
-        <key>default</key>
-        <true />
-        <key>defaults</key>
-        <string>com.haoict.tiktokgodpref</string>
-        <key>key</key>
-        <string>canHideUI</string>
-        <key>label</key>
-        <string>CAN_HIDE_UI</string>
-        <key>subtitle</key>
-        <string>ENABLE_SHOW_HIDE_UI_BUTTON</string>
-        <key>PostNotification</key>
-        <string>com.haoict.tiktokgodpref/PrefChanged</string>
-      </dict>
-
       <!-- Reset Settings -->
       <dict>
         <key>cell</key>
         <string>PSGroupCell</string>
         <key>label</key>
         <string>OTHER_PREFERENCES</string>
-      </dict>
-
-      <dict>
-        <key>cell</key>
-        <string>PSSwitchCell</string>
-        <key>cellClass</key>
-        <string>HPSSwitchCell</string>
-        <key>default</key>
-        <false/>
-        <key>defaults</key>
-        <string>com.haoict.tiktokgodpref</string>
-        <key>key</key>
-        <string>showAdditionalDownloadButton</string>
-        <key>label</key>
-        <string>SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON</string>
-        <key>PostNotification</key>
-        <string>com.haoict.tiktokgodpref/PrefChanged</string>
       </dict>
 
       <dict>

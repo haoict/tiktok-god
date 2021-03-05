@@ -1,5 +1,6 @@
+#include <dlfcn.h>
 #import <Foundation/Foundation.h>
-#import <libhdev/HUtilities/HDownloadMedia.h>
+#import <UIKit/UIKit.h>
 #import <libhdev/HUtilities/HDownloadMediaWithProgress.h>
 
 #define PLIST_PATH "/var/mobile/Library/Preferences/com.haoict.tiktokgodpref.plist"
@@ -20,28 +21,6 @@
 @property(retain, nonatomic) AWEVideoModel* video;
 @end
 
-@interface AWEAwemeDislikeNewReasonModel : NSObject
-@property(retain, nonatomic) NSString *title;
-@property(nonatomic) long long dislikeType;
-@end
-
-@interface AWEAwemeDislikeNewReasonTableViewCell : NSObject
-@property(retain, nonatomic) AWEAwemeDislikeNewReasonModel *model;
-@property(retain, nonatomic) UILabel *titleLabel;
-@end
-
-@interface AWEAwemePlayDislikeViewController : UIViewController
-@property(retain, nonatomic) AWEAwemeModel *model;
-- (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)dismissActionsWithExecutingBlock;
-@end
-
-@interface TIKTOKAwemePlayDislikeViewController : UIViewController
-@property(retain, nonatomic) AWEAwemeModel *model;
-- (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)dismissActionsWithExecutingBlock;
-@end
-
 @interface AWEPlayVideoViewController : UIViewController
 - (void)setPlayerSeekTime:(double)arg1 completion:(id)arg2;
 @end
@@ -50,6 +29,8 @@
 @end
 
 @interface AWEFeedContainerViewController : UIViewController
+@property(retain, nonatomic) UIView *tabControl;
+@property(retain, nonatomic) UIView *specialEventEntranceView;
 @property(nonatomic) BOOL isUIHidden; // new property
 - (void)setAccessoriesHidden:(BOOL)arg1;
 + (AWEFeedContainerViewController *)sharedInstance; // new

@@ -5,7 +5,6 @@
 #include "Tweak.h"
 
 BOOL noads;
-BOOL unlimitedDownload;
 BOOL downloadWithoutWatermark;
 BOOL autoPlayNextVideo;
 BOOL changeRegion;
@@ -18,14 +17,12 @@ static void reloadPrefs() {
   NSDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@PLIST_PATH] ?: [@{} mutableCopy];
 
   noads = [[settings objectForKey:@"noads"] ?: @(YES) boolValue];
-  unlimitedDownload = [[settings objectForKey:@"unlimitedDownload"] ?: @(YES) boolValue];
   downloadWithoutWatermark = [[settings objectForKey:@"downloadWithoutWatermark"] ?: @(YES) boolValue];
   autoPlayNextVideo = [[settings objectForKey:@"autoPlayNextVideo"] ?: @(NO) boolValue];
   changeRegion = [[settings objectForKey:@"changeRegion"] ?: @(NO) boolValue];
   region = [settings objectForKey:@"region"] ?: [@{} mutableCopy];
   showProgressBar = [[settings objectForKey:@"showProgressBar"] ?: @(NO) boolValue];
   canHideUI = [[settings objectForKey:@"canHideUI"] ?: @(YES) boolValue];
-  showAdditionalDownloadButton = [[settings objectForKey:@"showAdditionalDownloadButton"] ?: @(NO) boolValue];
 }
 
 %group CoreLogic
@@ -38,42 +35,6 @@ static void reloadPrefs() {
     - (id)init {
       id orig = %orig;
       return noads && self.isAds ? nil : orig;
-    }
-
-    - (BOOL)preventDownload {
-      return unlimitedDownload ? FALSE : %orig;
-    }
-
-    - (BOOL)disableDownload {
-      return unlimitedDownload ? FALSE : %orig;
-    }
-  %end
-
-  %hook AWEAwemePlayDislikeViewController
-    - (BOOL)shouldShowDownload:(id)arg1 {
-      return unlimitedDownload ? TRUE : %orig;
-    }
-
-    - (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-      AWEAwemeDislikeNewReasonTableViewCell *orig = %orig;
-      if (downloadWithoutWatermark && orig.model.dislikeType == 1) {
-        orig.titleLabel.text = [NSString stringWithFormat:@"%@%@", orig.titleLabel.text, @" - No Watermark"];
-      }
-      return orig;
-    }
-  %end
-
-  %hook TIKTOKAwemePlayDislikeViewController
-    - (BOOL)shouldShowDownload:(id)arg1 {
-      return unlimitedDownload ? TRUE : %orig;
-    }
-
-    - (AWEAwemeDislikeNewReasonTableViewCell *)tableView:(id)arg1 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-      AWEAwemeDislikeNewReasonTableViewCell *orig = %orig;
-      if (downloadWithoutWatermark && orig.model.dislikeType == 1) {
-        orig.titleLabel.text = [NSString stringWithFormat:@"%@%@", orig.titleLabel.text, @" - No Watermark"];
-      }
-      return orig;
     }
   %end
 
@@ -138,7 +99,7 @@ static void reloadPrefs() {
     - (void)viewDidLoad {
       %orig;
 
-      if (downloadWithoutWatermark && showAdditionalDownloadButton) {
+      if (downloadWithoutWatermark) {
         self.hDownloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.hDownloadButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [self.hDownloadButton addTarget:self action:@selector(hDownloadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -268,6 +229,9 @@ static void reloadPrefs() {
       if ([self.parentViewController isKindOfClass:%c(AWEFeedCellViewController)]) {
         [afcVC setAccessoriesHidden:afcVC.isUIHidden];
       }
+
+      afcVC.tabControl.hidden = afcVC.isUIHidden;
+      afcVC.specialEventEntranceView.hidden = afcVC.isUIHidden;
     }
 
     - (void)showDislikeOnVideo {
@@ -290,36 +254,6 @@ static void reloadPrefs() {
         return NO;
       }
       return YES;
-    }
-  %end
-
-  %hook AWEDownloadShareChannel
-    - (void)startDownloadingWithCompletion:(id)arg1 {
-      if (!downloadWithoutWatermark) {
-        %orig;
-        return;
-      }
-      NSString *videoURLString = self.downloadOptions.awemeModel.video.playURL.originURLList.firstObject;
-      if ([videoURLString containsString:@".m3u8"]) {
-        [HCommon showAlertMessage:@"This video format is not supported (.m3u8 file extension)" withTitle:@"Not supported" viewController:nil];
-        %orig;
-      }
-      [HDownloadMedia checkPermissionToPhotosAndDownload:videoURLString appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok"];
-    }
-  %end
-
-  %hook AWEAwemePlayInteractionPresenter
-    - (void)longPressDownload {
-      if (!downloadWithoutWatermark) {
-        %orig;
-        return;
-      }
-      NSString *videoURLString = self.model.video.playURL.originURLList.firstObject;
-      if ([videoURLString containsString:@".m3u8"]) {
-        [HCommon showAlertMessage:@"This video format is not supported (.m3u8 file extension)" withTitle:@"Not supported" viewController:nil];
-        %orig;
-      }
-      [[[HDownloadMediaWithProgress alloc] init] checkPermissionToPhotosAndDownload:videoURLString appendExtension:@"mp4" mediaType:Video toAlbum:@"TikTok" viewController:self.viewController];
     }
   %end
 %end

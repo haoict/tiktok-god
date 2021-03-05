@@ -1,7 +1,7 @@
 Package: com.haoict.tiktokgod
 Name: TikTok God
-Depends: mobilesubstrate, preferenceloader, com.haoict.libhdev (>= 4.5.0), firmware (>= 10)
-Version: 1.9.3
+Depends: mobilesubstrate, preferenceloader, com.haoict.libhdev (>= 4.6.0), firmware (>= 12)
+Version: 1.10.0
 Architecture: iphoneos-arm
 Description: The best tweak for TikTok app.
  The best tweak for TikTok app.
@@ -9,16 +9,15 @@ Description: The best tweak for TikTok app.
  . 
  Features:
  - Remove Ads
- - Enable download for all videos
  - Download without watermark
  - Auto scroll to next video
  - Change Region (may not work for iPad and some devices)
  - Show progress bar (for fast forward or rewind video)
  - Can hide UI (view video in full screen)
- - Support iOS 10-13 & latest TikTok version
+ - Support iOS 10-14 & latest TikTok version
  . 
  I work very hard to make good, free and open source tweaks for everyone
- If you want to support, you can buy me a coffee at https://www.paypal.me/haoict or https://www.patreon.com/haoict
+ If you want to support, you can buy me a coffee at https://www.paypal.me/haoict
  . 
  Thanks a ton
 Maintainer: Hao Nguyen
