@@ -1,6 +1,6 @@
 # TikTok God
 
-Best free & open source tweak for TikTok app on iOS 10 - 14  
+Best free & open source tweak for TikTok app on iOS 12 - 14  
 
 <img src="https://haoict.github.io/cydia/images/tiktokgodbanner.jpg" alt="TikTok God" width="414"/>
 
@@ -9,10 +9,10 @@ Best free & open source tweak for TikTok app on iOS 10 - 14
 - Enable download for all videos
 - Download without watermark
 - Auto scroll to next video
-- Change Region (may not work for iPad and some devices)
 - Show progress bar (for fast forward or rewind video)
 - Can hide UI (view video in full screen)
-- Support iOS 10-13 & latest TikTok version
+- Change Region (may not work for iPad and some devices)
+- Support iOS 12 - 14 & latest TikTok version
 
 ## Cydia Repo
 
@@ -39,6 +39,8 @@ make do
 [steffanjensen](https://github.com/steffanjensen)
 
 [jaideejung007](https://github.com/jaideejung007) (Thai Translator)
+
+[Ali7assan](https://twitter.com/slfar01) (Ar Translator)
 
 My project uses some source code from [hookTikTok](https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23) by chenxk-j for Change Region function. Credit goes to him. Thanks!
 
