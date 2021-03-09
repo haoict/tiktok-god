@@ -406,21 +406,6 @@ static void reloadPrefs() {
       %orig;
     }
   %end
-
-  %hook AWEAwemeBaseViewController
-    - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(UITouch *)arg2 {
-      if (!showProgressBar) {
-        return %orig;
-      }
-
-      if ([arg2.view isKindOfClass:[UISlider class]]) {
-        // prevent recognizing touches on the slider
-        // currently not working??
-        return NO;
-      }
-      return YES;
-    }
-  %end
 %end
 
 %ctor {
