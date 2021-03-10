@@ -77,7 +77,7 @@
         <key>cellClass</key>
         <string>HPSSwitchCell</string>
         <key>default</key>
-        <false />
+        <true />
         <key>defaults</key>
         <string>com.haoict.tiktokgodpref</string>
         <key>key</key>
@@ -107,6 +107,13 @@
         <string>ENABLE_SHOW_HIDE_UI_BUTTON</string>
         <key>PostNotification</key>
         <string>com.haoict.tiktokgodpref/PrefChanged</string>
+      </dict>
+
+      <dict>
+        <key>cell</key>
+        <string>PSGroupCell</string>
+        <key>label</key>
+        <string>CHANGE_REGION</string>
       </dict>
 
       <dict>
@@ -167,7 +174,6 @@
           <string>France 🇫🇷</string>
           <string>Finland 🇫🇮</string>
           <string>Italy 🇮🇹</string>
-          <string>India 🇮🇳</string>
           <string>Pakistan 🇵🇰</string>
           <string>Denmark 🇩🇰</string>
           <string>Norway 🇳🇴</string>
@@ -177,6 +183,11 @@
           <string>Saudi Arabia 🇸🇦</string>
           <string>Egypt 🇪🇬</string>
           <string>Lebanon 🇱🇧</string>
+          <string>Mexico 🇲🇽</string>
+          <string>Brazil 🇧🇷</string>
+          <string>Turkey 🇹🇷</string>
+          <string>Kuwait 🇰🇼</string>
+          <string>India 🇮🇳 (won't work, India banned TikTok)</string>
           <string>China (won't work, only for China appstore)</string>
         </array>
         <key>validValues</key>
@@ -423,16 +434,6 @@
           </dict>
           <dict>
             <key>area</key>
-            <string>India 🇮🇳</string>
-            <key>code</key>
-            <string>IN</string>
-            <key>mcc</key>
-            <string>404</string>
-            <key>mnc</key>
-            <string>01</string>
-          </dict>
-          <dict>
-            <key>area</key>
             <string>Pakistan 🇵🇰</string>
             <key>code</key>
             <string>PK</string>
@@ -520,6 +521,56 @@
             <string>415</string>
             <key>mnc</key>
             <string>03</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Mexico ?</string>
+            <key>code</key>
+            <string>MX</string>
+            <key>mcc</key>
+            <string>334</string>
+            <key>mnc</key>
+            <string>050</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Brazil ?</string>
+            <key>code</key>
+            <string>BR</string>
+            <key>mcc</key>
+            <string>724</string>
+            <key>mnc</key>
+            <string>26</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Turkey ?</string>
+            <key>code</key>
+            <string>TR</string>
+            <key>mcc</key>
+            <string>286</string>
+            <key>mnc</key>
+            <string>04</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Kuwait ?</string>
+            <key>code</key>
+            <string>KW</string>
+            <key>mcc</key>
+            <string>419</string>
+            <key>mnc</key>
+            <string>02</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>India 🇮🇳</string>
+            <key>code</key>
+            <string>IN</string>
+            <key>mcc</key>
+            <string>404</string>
+            <key>mnc</key>
+            <string>01</string>
           </dict>
           <dict>
             <key>area</key>

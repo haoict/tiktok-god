@@ -26,6 +26,7 @@
 @end
 
 @interface AWEAwemePlayVideoViewController : AWEPlayVideoViewController
+- (void)setPlayerSeekTime:(double)arg1 completion:(id)arg2;
 @end
 
 @interface AWEFeedContainerViewController : UIViewController
@@ -38,18 +39,14 @@
 
 @interface AWEPlayInteractionViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic) AWEAwemePlayVideoViewController *videoDelegate;
+@property(nonatomic) AWEPlayVideoViewController *videoDelegate;
 @property(nonatomic, retain) UISlider *slider; // new property
 @property(nonatomic, retain) NSTimer *sliderTimer; // new property
 @property(nonatomic, retain) UIButton *hideUIButton; // new property
 @property(nonatomic, retain) UIButton *hDownloadButton; // new property
 - (double)currentPlayerPlaybackTime;
 - (void)setHide:(BOOL)arg1;
-- (void)onSliderValChanged:(UISlider *)slider forEvent:(UIEvent *)event; // new
-- (void)timerAction:(NSTimer *)timer; // new
-- (void)hideUIButtonPressed; // new
 - (void)updateShowOrHideUI; // new
-- (void)hDownloadButtonPressed; // new
 @end
 
 @interface AWEAwemePlayInteractionViewController : UIViewController
@@ -61,11 +58,7 @@
 @property(nonatomic, retain) UIButton *hDownloadButton; // new property
 - (double)currentPlayerPlaybackTime;
 - (void)setHide:(BOOL)arg1;
-- (void)onSliderValChanged:(UISlider *)slider forEvent:(UIEvent *)event; // new
-- (void)timerAction:(NSTimer *)timer; // new
-- (void)hideUIButtonPressed; // new
 - (void)updateShowOrHideUI; // new
-- (void)hDownloadButtonPressed; // new
 @end
 
 @interface AWEAwemePlayInteractionPresenter : NSObject

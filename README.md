@@ -20,7 +20,7 @@ Best free & open source tweak for TikTok app on iOS 12 - 14
 
 ## Screenshot
 
-<img src="https://haoict.github.io/cydia/images/tiktokgodpref.png" alt="TikTok God Preferences" width="280"/>
+<img src="https://i.imgur.com/80ze9gA.png" alt="TikTok God Preferences" width="280"/>
 
 ## Building
 
