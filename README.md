@@ -42,6 +42,8 @@ make do
 
 [Ali7assan](https://twitter.com/slfar01) (Ar Translator)
 
+[Barış Güreşçi](https://twitter.com/BarisGuresci) (Tr Translator)
+
 My project uses some source code from [hookTikTok](https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23) by chenxk-j for Change Region function. Credit goes to him. Thanks!
 
 Contributions of any kind welcome!

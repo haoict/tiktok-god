@@ -1,0 +1,36 @@
+{
+  "APPLY"="Uygula";
+  "AUTO_PLAY_NEXT_VIDEO"="Sonraki video otomatik oynat";
+  "BUY_ME_A_COFFEE"="Bana bir kahve al";
+  "CANCEL"="Vazgeç";
+  "CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO"="Alınan videoları indirebilir";
+  "CAN_HIDE_UI"="Sakla UI";
+  "CHANGE_REGION"="Bölge değiştir";
+  "CONFIRM"="Onayla";
+  "DEFAULT"="Default";
+  "DONATION"="Bağış Money bag";
+  "DOWNLOAD_WITHOUT_WATERMARK"="Filigran olmadan indir";
+  "DO_YOU_REALLY_WANT_TO_KILL_TIKTOK"="Gerçekten ayarları uygulamak istiyor musun?";
+  "ENABLE_SHOW_HIDE_UI_BUTTON"="Gösteriyi Göster\/Gizle UI düğmesini";
+  "FEATURE_REQUEST"="Özellik isteği Sparkles";
+  "FINGER_FREE"="Finger free, yeah!";
+  "FOR_FAST_FORWARD_OR_REWIND_VIDEO"="Hızlı ileri veya geri sarma videosu için";
+  "FOUND_A_BUG"="Bir hata buldum Bug";
+  "LEAVE_A_BUG_REPORT_ON_GITHUB"="GitHub hakkında bir hata raporu bırakın";
+  "MAIN_PREFERENCES"="Ana Tercihler";
+  "MAY_NOT_WORK_FOR_IPAD_AND_SOME_DEVICES"="(iPad ve bazı cihazlar için çalışmayabilir)";
+  "MORE_FEATURES_COMMING_SOON"="Yakında daha fazla özellik";
+  "NO_ADS"="Reklamsız";
+  "OTHER_PREFERENCES"="Diğer tercihler";
+  "PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON"="İndirme düğmesini göstermek için video tuşunu basılı tutun.";
+  "REMOVE_SPONSORED_VIDEO"="Remove \"Sponsored\" videos";
+  "RESET_SETTINGS"="Ayarları Sıfırla";
+  "SELECT_COUNTRY"="Ülke'yi seçin";
+  "SEND_ME_AN_EMAIL_WITH_YOUR_REQUEST"="Bana bir e-posta gönder";
+  "SHOW_PROGRESS_BAR"="İlerleme çubuğunu göster";
+  "SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON"="Üst sağ köşe indirme düğmesini göster";
+  "SOURCE_CODE"="Kaynak kodu Robot face";
+  "SUPPORT_ME"="Beni destekle";
+  "UNLIMITED_DOWNLOAD"="Sınırsız indir";
+  "VIEW_TIKTOK_FROM_ANOTHER_COUNTRY"="Tiktok'u başka bir ülkeden görüntüle";
+}
