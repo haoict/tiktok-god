@@ -187,6 +187,7 @@
           <string>Brazil 🇧🇷</string>
           <string>Turkey 🇹🇷</string>
           <string>Kuwait 🇰🇼</string>
+          <string>Algeria 🇩🇿</string>
           <string>India 🇮🇳 (won't work, India banned TikTok)</string>
           <string>China (won't work, only for China appstore)</string>
         </array>
@@ -561,6 +562,16 @@
             <string>419</string>
             <key>mnc</key>
             <string>02</string>
+          </dict>
+          <dict>
+            <key>area</key>
+            <string>Algeria 🇩🇿</string>
+            <key>code</key>
+            <string>DZ</string>
+            <key>mcc</key>
+            <string>213</string>
+            <key>mnc</key>
+            <string>01</string>
           </dict>
           <dict>
             <key>area</key>

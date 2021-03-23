@@ -1,7 +1,7 @@
 Package: com.haoict.tiktokgod
 Name: TikTok God
 Depends: mobilesubstrate, preferenceloader, com.haoict.libhdev (>= 4.8.0), firmware (>= 12)
-Version: 1.12.1
+Version: 1.12.2
 Architecture: iphoneos-arm
 Description: The best tweak for TikTok app.
  The best tweak for TikTok app.
