@@ -1,5 +1,5 @@
 ARCHS = arm64 arm64e
-TARGET = iphone:clang:14.4:12.0
+export TARGET = iphone:clang:13.6:12.0
 
 INSTALL_TARGET_PROCESSES = TikTok Preferences
 
@@ -11,7 +11,8 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = tiktokgod
 tiktokgod_FILES = $(wildcard *.xm *.m)
 tiktokgod_EXTRA_FRAMEWORKS = libhdev
-tiktokgod_CFLAGS = -fobjc-arc -std=c++11
+tiktokgod_CFLAGS = -fobjc-arc -Wno-deprecated-declarations -Wno-nullability-completeness
+# tiktokgod_CFLAGS = -fobjc-arc -std=c++11
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

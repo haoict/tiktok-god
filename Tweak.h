@@ -39,7 +39,7 @@
 
 @interface AWEPlayInteractionViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic) AWEPlayVideoViewController *videoDelegate;
+@property(nonatomic) AWEPlayVideoViewController *player;
 @property(nonatomic, retain) UISlider *slider; // new property
 @property(nonatomic, retain) NSTimer *sliderTimer; // new property
 @property(nonatomic, retain) UIButton *hideUIButton; // new property
@@ -51,7 +51,7 @@
 
 @interface AWEAwemePlayInteractionViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic) AWEAwemePlayVideoViewController *videoDelegate;
+@property(nonatomic) AWEAwemePlayVideoViewController *player;
 @property(nonatomic, retain) UISlider *slider; // new property
 @property(nonatomic, retain) NSTimer *sliderTimer; // new property
 @property(nonatomic, retain) UIButton *hideUIButton; // new property

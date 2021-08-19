@@ -192,7 +192,7 @@ static void reloadPrefs() {
         case UITouchPhaseEnded: {
           double duration = [self.model.video.duration doubleValue] / 1000.0 - 2.3;
           double seekTime = slider.value / 100.0 * (duration);
-          [self.videoDelegate setPlayerSeekTime:seekTime completion:nil];
+          [self.player setPlayerSeekTime:seekTime completion:nil];
           if (self.sliderTimer == nil) {
             self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:slider repeats:TRUE];
           }
@@ -344,7 +344,7 @@ static void reloadPrefs() {
         case UITouchPhaseEnded: {
           double duration = [self.model.video.duration doubleValue] / 1000.0 - 2.3;
           double seekTime = slider.value / 100.0 * (duration);
-          [self.videoDelegate setPlayerSeekTime:seekTime completion:nil];
+          [self.player setPlayerSeekTime:seekTime completion:nil];
           if (self.sliderTimer == nil) {
             self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerAction:) userInfo:slider repeats:TRUE];
           }
