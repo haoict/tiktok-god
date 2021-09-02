@@ -1,0 +1,36 @@
+{
+"APPLY" = "Anwenden";
+"AUTO_PLAY_NEXT_VIDEO" = "Nächstes Video automatisch";
+"BUY_ME_A_COFFEE" = "Kauf mir einen Kaffee";
+"CANCEL" = "Abbrechen";
+"CAN_DOWNLOAD_UNDOWNLOADABLE_VIDEO" = "Kann nicht herunterladbare Videos herunterladen";
+"CAN_HIDE_UI" = "Benutzeroberfläche ausblenden";
+"CHANGE_REGION" = "Region ändern";
+"CONFIRM" = "Bestätigen";
+"DEFAULT" = "Standard";
+"DONATION" = "Spende 💰";
+"DOWNLOAD_WITHOUT_WATERMARK" = "Ohne Wasserzeichen laden";
+"DO_YOU_REALLY_WANT_TO_KILL_TIKTOK" = "Willst du TikTok wirklich neu laden?";
+"ENABLE_SHOW_HIDE_UI_BUTTON" = "UI-Schaltfläche ein\/aus aktivieren";
+"FEATURE_REQUEST" = "Erweiterung anfragen ✨";
+"FINGER_FREE" = "Finger frei, ja!";
+"FOR_FAST_FORWARD_OR_REWIND_VIDEO" = "Zum schnellen Vor- oder Zurückspulen";
+"FOUND_A_BUG" = "Fehler gefunden 🐛";
+"LEAVE_A_BUG_REPORT_ON_GITHUB" = "Hinterlasse einen Fehlerbericht auf Github";
+"MAIN_PREFERENCES" = "Haupteinstellungen";
+"MAY_NOT_WORK_FOR_IPAD_AND_SOME_DEVICES" = "(funktioniert möglicherweise nicht für iPad)";
+"MORE_FEATURES_COMMING_SOON" = "Weitere Funktionen in Kürze";
+"NO_ADS" = "Keine Werbung";
+"OTHER_PREFERENCES" = "Andere Einstellungen";
+"PRESS_AND_HOLD_VIDEO_TO_SHOW_DOWNLOAD_BUTTON" = "Halte das Video gedrückt, um die Download-Schaltfläche anzuzeigen";
+"REMOVE_SPONSORED_VIDEO" = "\"Gesponserte\" Videos entfernen";
+"RESET_SETTINGS" = "Einstellungen zurücksetzen";
+"SELECT_COUNTRY" = "Land auswählen";
+"SEND_ME_AN_EMAIL_WITH_YOUR_REQUEST" = "Sende mir eine E-Mail mit deiner Anfrage";
+"SHOW_PROGRESS_BAR" = "Fortschrittsbalken anzeigen";
+"SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON" = "Download-Schaltfläche in der oberen rechten Ecke anzeigen";
+"SOURCE_CODE" = "Quellcode 🤖";
+"SUPPORT_ME" = "Unterstütze mich";
+"UNLIMITED_DOWNLOAD" = "Unbegrenzter Download";
+"VIEW_TIKTOK_FROM_ANOTHER_COUNTRY" = "TikTok aus einem anderen Land anzeigen";
+}
