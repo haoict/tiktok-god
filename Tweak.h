@@ -21,11 +21,16 @@
 @property(retain, nonatomic) AWEVideoModel* video;
 @end
 
-@interface AWEPlayVideoViewController : UIViewController
+@interface AWEFeedCellViewController : UIViewController
+@end
+
+@interface AWEPlayVideoPlayerController : NSObject
+@property(nonatomic) AWEFeedCellViewController *container;
 - (void)setPlayerSeekTime:(double)arg1 completion:(id)arg2;
 @end
 
-@interface AWEAwemePlayVideoViewController : AWEPlayVideoViewController
+@interface AWEAwemePlayVideoPlayerController : NSObject
+@property(nonatomic) AWEFeedCellViewController *container;
 - (void)setPlayerSeekTime:(double)arg1 completion:(id)arg2;
 @end
 
@@ -39,31 +44,10 @@
 
 @interface AWEPlayInteractionViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic) AWEPlayVideoViewController *player;
-@property(nonatomic, retain) UISlider *slider; // new property
-@property(nonatomic, retain) NSTimer *sliderTimer; // new property
 @property(nonatomic, retain) UIButton *hideUIButton; // new property
 @property(nonatomic, retain) UIButton *hDownloadButton; // new property
-- (double)currentPlayerPlaybackTime;
 - (void)setHide:(BOOL)arg1;
 - (void)updateShowOrHideUI; // new
-@end
-
-@interface AWEAwemePlayInteractionViewController : UIViewController
-@property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic) AWEAwemePlayVideoViewController *player;
-@property(nonatomic, retain) UISlider *slider; // new property
-@property(nonatomic, retain) NSTimer *sliderTimer; // new property
-@property(nonatomic, retain) UIButton *hideUIButton; // new property
-@property(nonatomic, retain) UIButton *hDownloadButton; // new property
-- (double)currentPlayerPlaybackTime;
-- (void)setHide:(BOOL)arg1;
-- (void)updateShowOrHideUI; // new
-@end
-
-@interface AWEAwemePlayInteractionPresenter : NSObject
-@property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic) AWEAwemePlayInteractionViewController *viewController; 
 @end
 
 @interface AWEMediaDownloadOptions : NSObject
