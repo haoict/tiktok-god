@@ -43,9 +43,6 @@ static void reloadPrefs() {
     - (BOOL)progressBarVisible {
       return showProgressBar || %orig;
     }
-    - (BOOL)isProgressBarShown {
-      return showProgressBar || %orig;
-    }
   %end
 
   %hook CTCarrier
@@ -167,10 +164,67 @@ static void reloadPrefs() {
   %end
 %end
 
+%group JailbreakBypass
+  %hook AppsFlyerUtils
+    + (BOOL)isJailbrokenWithSkipAdvancedJailbreakValidation:(BOOL)arg1 {
+      return NO;
+    }
+  %end
+
+  %hook BDADeviceHelper
+    + (BOOL)isJailBroken {
+      return NO;
+    }
+  %end
+
+  %hook BDInstallNetworkUtility
+    + (BOOL)isJailBroken {
+      return NO;
+    }
+  %end
+
+  %hook IESLiveDeviceInfo
+    + (BOOL)isJailBroken {
+      return NO;
+    }
+  %end
+
+  %hook PIPOStoreKitHelper
+    + (BOOL)isJailBroken {
+      return NO;
+    }
+  %end
+
+  %hook TTAdSplashDeviceHelper
+    + (BOOL)isJailBroken {
+      return NO;
+    }
+  %end
+
+  %hook TTInstallUtil
+    + (BOOL)isJailBroken {
+      return NO;
+    }
+  %end
+
+  %hook PIPOIAPStoreManager
+    - (BOOL)_pipo_isJailBrokenDeviceWithProductID:(id)arg1 orderID:(id)arg2 {
+      return NO;
+    }
+  %end
+
+  %hook UIDevice
+    + (BOOL)btd_isJailBroken {
+      return NO;
+    }
+  %end
+%end
+
 %ctor {
   CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) reloadPrefs, CFSTR(PREF_CHANGED_NOTIF), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
   reloadPrefs();
 
   %init(CoreLogic);
+  %init(JailbreakBypass);
 }
 
