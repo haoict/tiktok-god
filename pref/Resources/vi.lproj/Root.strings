@@ -21,6 +21,7 @@
   "FOR_FAST_FORWARD_OR_REWIND_VIDEO" = "Dùng để tua nhanh hoặc tua ngược video";
   "CAN_HIDE_UI" = "Có thể ẩn UI";
   "ENABLE_SHOW_HIDE_UI_BUTTON" = "Mở chức nút năng ẩn/hiện UI";
+  "ENABLE_FAV_COLLECTIONS" = "Bật Bộ sưu tập Yêu thích";
   "MORE_FEATURES_COMMING_SOON" = "Nhiều tính năng mới sẽ cập nhật sau";
   "OTHER_PREFERENCES" = "Tùy chỉnh phụ";
   "SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON" = "Hiện nút download ở góc trên bên phải";

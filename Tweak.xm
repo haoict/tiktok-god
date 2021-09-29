@@ -10,13 +10,14 @@ BOOL autoPlayNextVideo;
 BOOL changeRegion;
 BOOL showProgressBar;
 BOOL canHideUI;
+BOOL enableFavoritesCollections;
 BOOL showAdditionalDownloadButton;
 NSDictionary *region;
 
 static void reloadPrefs() {
   NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:@PLIST_PATH] ?: @{
     @"noads": @YES,
-    @"downloadWithoutWatermark", @YES,
+    @"downloadWithoutWatermark": @YES,
     @"canHideUI": @YES,
   };
 
@@ -26,6 +27,7 @@ static void reloadPrefs() {
   changeRegion = settings[@"changeRegion"];
   region = settings[@"region"];
   showProgressBar = settings[@"showProgressBar"];
+  enableFavoritesCollections = settings[@"enableFavoritesCollections"];
   canHideUI = settings[@"canHideUI"];
 }
 
@@ -164,6 +166,16 @@ static void reloadPrefs() {
 
       afcVC.tabControl.hidden = afcVC.isUIHidden;
       afcVC.specialEventEntranceView.hidden = afcVC.isUIHidden;
+    }
+  %end
+  
+  %hook AWEFavoriteAwemeViewController
+    - (id)init {
+      if (enableFavoritesCollections) {
+        return [%c(TTKFavoriteAwemeCollectionsViewController) new];
+      } else {
+        return %orig;
+      }
     }
   %end
 %end

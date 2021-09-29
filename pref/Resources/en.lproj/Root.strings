@@ -21,6 +21,7 @@
   "FOR_FAST_FORWARD_OR_REWIND_VIDEO" = "For fast forward or rewind video";
   "CAN_HIDE_UI" = "Can hide UI";
   "ENABLE_SHOW_HIDE_UI_BUTTON" = "Enable Show/Hide UI button";
+  "ENABLE_FAV_COLLECTIONS" = "Enable Favorites Collections";
   "MORE_FEATURES_COMMING_SOON" = "More Features Comming Soon";
   "OTHER_PREFERENCES" = "Other Preferences";
   "SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON" = "Show Top Right Corner Download Button";
