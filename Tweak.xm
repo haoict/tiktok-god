@@ -14,15 +14,19 @@ BOOL showAdditionalDownloadButton;
 NSDictionary *region;
 
 static void reloadPrefs() {
-  NSDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@PLIST_PATH] ?: [@{} mutableCopy];
+  NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:@PLIST_PATH] ?: @{
+    @"noads": @YES,
+    @"downloadWithoutWatermark", @YES,
+    @"canHideUI": @YES,
+  };
 
-  noads = [[settings objectForKey:@"noads"] ?: @(YES) boolValue];
-  downloadWithoutWatermark = [[settings objectForKey:@"downloadWithoutWatermark"] ?: @(YES) boolValue];
-  autoPlayNextVideo = [[settings objectForKey:@"autoPlayNextVideo"] ?: @(NO) boolValue];
-  changeRegion = [[settings objectForKey:@"changeRegion"] ?: @(NO) boolValue];
-  region = [settings objectForKey:@"region"] ?: [@{} mutableCopy];
-  showProgressBar = [[settings objectForKey:@"showProgressBar"] ?: @(NO) boolValue];
-  canHideUI = [[settings objectForKey:@"canHideUI"] ?: @(YES) boolValue];
+  noads = settings[@"noads"];
+  downloadWithoutWatermark = settings[@"downloadWithoutWatermark"];
+  autoPlayNextVideo = settings[@"autoPlayNextVideo"];
+  changeRegion = settings[@"changeRegion"];
+  region = settings[@"region"];
+  showProgressBar = settings[@"showProgressBar"];
+  canHideUI = settings[@"canHideUI"];
 }
 
 %group CoreLogic
