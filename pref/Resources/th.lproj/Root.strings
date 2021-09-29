@@ -21,6 +21,7 @@
   "FOR_FAST_FORWARD_OR_REWIND_VIDEO" = "เพื่อให้สามารถกรอวิดีโอไปข้างหน้าหรือถอยกลับได้";
   "CAN_HIDE_UI" = "ซ่อน UI ได้";
   "ENABLE_SHOW_HIDE_UI_BUTTON" = "เปิดใช้งาน ซ่อน/แสดงปุ่ม UI (แผงเมนูต่าง ๆ ในหน้าเล่นวิดีโอ)";
+  "ENABLE_FAV_COLLECTIONS" = "เปิดใช้งานคอลเลกชั่นรายการโปรด";
   "MORE_FEATURES_COMMING_SOON" = "ฟีเจอร์เพิ่มเติมกำลังจะมาเร็ว ๆ นี้";
   "OTHER_PREFERENCES" = "ตั้งค่าอื่น ๆ";
   "SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON" = "แสดงปุ่มดาวน์โหลดมุมขวาด้านบนของแอป";

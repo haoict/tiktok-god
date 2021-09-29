@@ -21,6 +21,7 @@
   "FOR_FAST_FORWARD_OR_REWIND_VIDEO" = "للتقديم السريع أو الإرجاع للفيديو";
   "CAN_HIDE_UI" = "يمكن إخفاء واجهة المستخدم";
   "ENABLE_SHOW_HIDE_UI_BUTTON" = "تمكين زر إظهار / إخفاء واجهة المستخدم";
+  "ENABLE_FAV_COLLECTIONS" = "تمكين مجموعات المفضلة";
   "MORE_FEATURES_COMMING_SOON" = "المزيد من الميزات قريبا";
   "OTHER_PREFERENCES" = "تفضيلات أخرى";
   "SHOW_TOP_RIGHT_CORNER_DOWNLOAD_BUTTON" = "إظهار زر تنزيل الزاوية اليمنى العلوية";
