@@ -45,7 +45,7 @@
 @interface AWEPlayInteractionViewController : UIViewController
 @property(retain, nonatomic) AWEAwemeModel *model;
 @property(nonatomic, retain) UIButton *hideUIButton; // new property
-@property(nonatomic, retain) UIButton *hDownloadButton; // new property
+@property(nonatomic, retain) UIButton *downloadButton; // new property
 - (void)setHide:(BOOL)arg1;
 - (void)updateShowOrHideUI; // new
 @end

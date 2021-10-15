@@ -98,20 +98,20 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 
 %hook AWEPlayInteractionViewController
 %property (nonatomic, retain) UIButton *hideUIButton;
-%property (nonatomic, retain) UIButton *hDownloadButton;
+%property (nonatomic, retain) UIButton *downloadButton;
 
 - (void)viewDidLoad {
     %orig;
 
     if (downloadWithoutWatermark) {
-        self.hDownloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.hDownloadButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        [self.hDownloadButton addTarget:self action:@selector(hDownloadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        // [self.hDownloadButton setTitle:@"Download" forState:UIControlStateNormal];
-        [self.hDownloadButton setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/tiktokgod/download.png"] forState:UIControlStateNormal];
-        self.hDownloadButton.imageEdgeInsets = UIEdgeInsetsMake(3.0, 3.0, 3.0, 3.0);
-        self.hDownloadButton.frame = CGRectMake(self.view.frame.size.width - 30 - 10, 135.0, 30.0, 30.0);
-        [self.view addSubview:self.hDownloadButton];
+        self.downloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.downloadButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+        [self.downloadButton addTarget:self action:@selector(downloadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        // [self.downloadButton setTitle:@"Download" forState:UIControlStateNormal];
+        [self.downloadButton setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/tiktokgod/download.png"] forState:UIControlStateNormal];
+        self.downloadButton.imageEdgeInsets = UIEdgeInsetsMake(3.0, 3.0, 3.0, 3.0);
+        self.downloadButton.frame = CGRectMake(self.view.frame.size.width - 30 - 10, 135.0, 30.0, 30.0);
+        [self.view addSubview:self.downloadButton];
     }
 
     if (canHideUI) {
@@ -145,7 +145,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 }
 
 %new
-- (void)hDownloadButtonPressed:(UIButton *)sender {
+- (void)downloadButtonPressed:(UIButton *)sender {
     NSString *videoURLString = self.model.video.playURL.originURLList.firstObject;
     if ([videoURLString containsString:@".m3u8"]) {
         [HCommon showAlertMessage:@"This video format is not supported (.m3u8 file extension)" withTitle:@"Not supported" viewController:nil];
@@ -157,7 +157,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 - (void)updateShowOrHideUI {
     AWEFeedContainerViewController *afcVC = (AWEFeedContainerViewController *)[%c(AWEFeedContainerViewController) sharedInstance];
     [self setHide:afcVC.isUIHidden];
-    [self.hDownloadButton setHidden:afcVC.isUIHidden];
+    [self.downloadButton setHidden:afcVC.isUIHidden];
     // [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
     [self.hideUIButton setImage:[UIImage imageWithContentsOfFile:afcVC.isUIHidden?@"/Library/Application Support/tiktokgod/showui.png":@"/Library/Application Support/tiktokgod/hideui.png"] forState:UIControlStateNormal];
     if ([self.parentViewController isKindOfClass:%c(AWEFeedCellViewController)]) {
