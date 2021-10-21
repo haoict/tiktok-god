@@ -34,11 +34,13 @@ static void reloadPrefs() {
 %group CoreLogic
 %hook AWEAwemeModel
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2 {
-    return noads && self.isAds ? nil : %orig;
+    self = %orig;
+    return noads && self.isAds ? nil : self;
 }
 
 - (id)init {
-    return noads && self.isAds ? nil : %orig;
+    self = %orig;
+    return noads && self.isAds ? nil : self;
 }
 
 - (BOOL)progressBarDraggable {
