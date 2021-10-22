@@ -4,50 +4,32 @@
 
 #include "Tweak.h"
 
-BOOL noads;
-BOOL downloadWithoutWatermark;
-BOOL autoPlayNextVideo;
-BOOL changeRegion;
-BOOL showProgressBar;
-BOOL canHideUI;
-BOOL enableFavoritesCollections;
-BOOL showAdditionalDownloadButton;
-NSDictionary *region;
+NSDictionary *region = nil;
 
 static void reloadPrefs() {
-    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:@PLIST_PATH] ?: @{
-        @"noads": @YES,
-        @"downloadWithoutWatermark": @YES,
-        @"canHideUI": @YES,
-    };
-
-    noads = settings[@"noads"];
-    downloadWithoutWatermark = settings[@"downloadWithoutWatermark"];
-    autoPlayNextVideo = settings[@"autoPlayNextVideo"];
-    changeRegion = settings[@"changeRegion"];
-    region = settings[@"region"];
-    showProgressBar = settings[@"showProgressBar"];
-    enableFavoritesCollections = settings[@"enableFavoritesCollections"];
-    canHideUI = settings[@"canHideUI"];
+    [TTGSettings.shared reloadPrefs];
+    region = TTGSettings.shared.region;
 }
 
 %group CoreLogic
+
 %hook AWEAwemeModel
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2 {
     self = %orig;
-    return noads && self.isAds ? nil : self;
+    return TTGSettings.shared.noads && self.isAds ? nil : self;
 }
 
 - (id)init {
     self = %orig;
-    return noads && self.isAds ? nil : self;
+    return TTGSettings.shared.noads && self.isAds ? nil : self;
 }
 
 - (BOOL)progressBarDraggable {
-    return showProgressBar || %orig;
+    return TTGSettings.shared.showProgressBar || %orig;
 }
+
 - (BOOL)progressBarVisible {
-    return showProgressBar || %orig;
+    return TTGSettings.shared.showProgressBar || %orig;
 }
 %end
 
@@ -55,21 +37,21 @@ static void reloadPrefs() {
 // Thanks chenxk-j for this
 // https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23
 - (NSString *)mobileCountryCode {
-    return (changeRegion && region[@"mcc"] != nil) ? region[@"mcc"] : %orig;
+    return (TTGSettings.shared.changeRegion && region[@"mcc"] != nil) ? region[@"mcc"] : %orig;
 }
 
 - (NSString *)isoCountryCode {
-    return (changeRegion && region[@"code"] != nil) ? region[@"code"] : %orig;
+    return (TTGSettings.shared.changeRegion && region[@"code"] != nil) ? region[@"code"] : %orig;
 }
 
 - (NSString *)mobileNetworkCode {
-    return (changeRegion && region[@"mnc"] != nil) ? region[@"mnc"] : %orig;
+    return (TTGSettings.shared.changeRegion && region[@"mnc"] != nil) ? region[@"mnc"] : %orig;
 }
 %end
 
 %hook AWEPlayVideoPlayerController
 - (void)playerWillLoopPlaying:(id)arg1 {
-    if (autoPlayNextVideo) {
+    if (TTGSettings.shared.autoPlayNextVideo) {
         if ([self.container.parentViewController isKindOfClass:%c(AWEFeedTableViewController)]) {
             [((AWEFeedTableViewController *)self.container.parentViewController) scrollToNextVideo];
             return;
@@ -103,7 +85,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 - (void)viewDidLoad {
     %orig;
 
-    if (downloadWithoutWatermark) {
+    if (TTGSettings.shared.downloadWithoutWatermark) {
         self.downloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.downloadButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [self.downloadButton addTarget:self action:@selector(downloadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -114,11 +96,11 @@ static AWEFeedContainerViewController *__weak sharedInstance;
         [self.view addSubview:self.downloadButton];
     }
 
-    if (canHideUI) {
-        AWEFeedContainerViewController *afcVC = (AWEFeedContainerViewController *)[%c(AWEFeedContainerViewController) sharedInstance];
+    if (TTGSettings.shared.canHideUI) {
+        AWEFeedContainerViewController *afcVC = (id)[%c(AWEFeedContainerViewController) sharedInstance];
         self.hideUIButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.hideUIButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-        [self.hideUIButton addTarget:self action:@selector(hideUIButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.hideUIButton addTarget:self action:@selector(toggleHideUI:) forControlEvents:UIControlEventTouchUpInside];
         // [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
         [self.hideUIButton setImage:[UIImage imageWithContentsOfFile:afcVC.isUIHidden?@"/Library/Application Support/tiktokgod/showui.png":@"/Library/Application Support/tiktokgod/hideui.png"] forState:UIControlStateNormal];
         self.hideUIButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -130,7 +112,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 
 - (void)stopLoadingAnimation {
     %orig;
-    if (canHideUI) {
+    if (TTGSettings.shared.canHideUI) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self updateShowOrHideUI];
         });
@@ -138,8 +120,8 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 }
 
 %new
-- (void)hideUIButtonPressed:(UIButton *)sender {
-    AWEFeedContainerViewController *afcVC = (AWEFeedContainerViewController *)[%c(AWEFeedContainerViewController) sharedInstance];
+- (void)toggleHideUI:(UIButton *)sender {
+    AWEFeedContainerViewController *afcVC = (id)[%c(AWEFeedContainerViewController) sharedInstance];
     afcVC.isUIHidden = !afcVC.isUIHidden;
     [self updateShowOrHideUI];
 }
@@ -155,15 +137,15 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 
 %new
 - (void)updateShowOrHideUI {
-    AWEFeedContainerViewController *afcVC = (AWEFeedContainerViewController *)[%c(AWEFeedContainerViewController) sharedInstance];
+    AWEFeedContainerViewController *afcVC = (id)[%c(AWEFeedContainerViewController) sharedInstance];
     [self setHide:afcVC.isUIHidden];
-    [self.downloadButton setHidden:afcVC.isUIHidden];
     // [self.hideUIButton setTitle:afcVC.isUIHidden?@"Show UI":@"Hide UI" forState:UIControlStateNormal];
     [self.hideUIButton setImage:[UIImage imageWithContentsOfFile:afcVC.isUIHidden?@"/Library/Application Support/tiktokgod/showui.png":@"/Library/Application Support/tiktokgod/hideui.png"] forState:UIControlStateNormal];
     if ([self.parentViewController isKindOfClass:%c(AWEFeedCellViewController)]) {
         [afcVC setAccessoriesHidden:afcVC.isUIHidden];
     }
 
+    self.downloadButton.hidden = afcVC.isUIHidden;
     afcVC.tabControl.hidden = afcVC.isUIHidden;
     afcVC.specialEventEntranceView.hidden = afcVC.isUIHidden;
 }
@@ -171,7 +153,7 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     
 %hook AWEFavoriteAwemeViewController
 - (id)init {
-    if (enableFavoritesCollections) {
+    if (TTGSettings.shared.enableFavoritesCollections) {
         return [%c(TTKFavoriteAwemeCollectionsViewController) new];
     } else {
         return %orig;

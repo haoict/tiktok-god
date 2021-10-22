@@ -2,8 +2,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <libhdev/HUtilities/HDownloadMediaWithProgress.h>
+#import "TTGSettings.h"
 
-#define PLIST_PATH "/var/mobile/Library/Preferences/com.haoict.tiktokgodpref.plist"
 #define PREF_CHANGED_NOTIF "com.haoict.tiktokgodpref/PrefChanged"
 
 @interface AWEURLModel : NSObject
