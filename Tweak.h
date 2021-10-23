@@ -42,10 +42,22 @@
 + (AWEFeedContainerViewController *)sharedInstance; // new
 @end
 
+@interface AWEPlayInteractionBaseElement : NSObject
+@end
+
+@interface AWEPlayInteractionElementContainer : NSObject
+@property (readonly) NSArray<__kindof AWEPlayInteractionBaseElement *> *elementArray;
+@property (readonly) UIStackView *containerView;
+@end
+
 @interface AWEPlayInteractionViewController : UIViewController
-@property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic, retain) UIButton *hideUIButton; // new property
-@property(nonatomic, retain) UIButton *downloadButton; // new property
+@property AWEAwemeModel *model;
+@property UIStackView *ttgButtonStack; // new property
+@property UIButton *hideUIButton; // new property
+@property UIButton *downloadButton; // new property
+
+@property (readonly) AWEPlayInteractionElementContainer *rightContainer;
+
 - (void)setHide:(BOOL)arg1;
 - (void)updateShowOrHideUI; // new
 @end
