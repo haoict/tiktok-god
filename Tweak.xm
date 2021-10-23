@@ -108,6 +108,12 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 
 - (void)viewDidLoad {
     %orig;
+    
+    UITapGestureRecognizer *twoFingerTap = [[UITapGestureRecognizer alloc]
+        initWithTarget:self action:@selector(toggleHideUI:)
+    ];
+    twoFingerTap.numberOfTouchesRequired = 2;
+    [self.view addGestureRecognizer:twoFingerTap];
 
     self.downloadButton = makeButton(
         self, @selector(downloadButtonPressed:),
