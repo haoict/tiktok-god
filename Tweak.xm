@@ -183,6 +183,8 @@ static AWEFeedContainerViewController *__weak sharedInstance;
     self.downloadButton.hidden = afcVC.isUIHidden || !TTGSettings.shared.downloadWithoutWatermark;
     afcVC.tabControl.hidden = afcVC.isUIHidden;
     afcVC.specialEventEntranceView.hidden = afcVC.isUIHidden;
+    afcVC.searchEntranceView.hidden = afcVC.isUIHidden;
+    afcVC.MTLiveEntranceView.hidden = afcVC.isUIHidden;
 }
 %end
     

@@ -35,9 +35,11 @@
 @end
 
 @interface AWEFeedContainerViewController : UIViewController
-@property(retain, nonatomic) UIView *tabControl;
-@property(retain, nonatomic) UIView *specialEventEntranceView;
-@property(nonatomic) BOOL isUIHidden; // new property
+@property (nonatomic, readonly) UIView *searchEntranceView;
+@property (nonatomic, readonly) UIView *MTLiveEntranceView;
+@property (nonatomic, readonly) UIView *tabControl;
+@property (nonatomic, readonly) UIView *specialEventEntranceView;
+@property (nonatomic) BOOL isUIHidden; // new property
 - (void)setAccessoriesHidden:(BOOL)arg1;
 + (AWEFeedContainerViewController *)sharedInstance; // new
 @end
