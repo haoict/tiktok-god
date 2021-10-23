@@ -170,21 +170,23 @@ static AWEFeedContainerViewController *__weak sharedInstance;
 %new
 - (void)updateShowOrHideUI {
     AWEFeedContainerViewController *afcVC = (id)[%c(AWEFeedContainerViewController) sharedInstance];
-    [self setHide:afcVC.isUIHidden];
+    BOOL isUIHidden = afcVC.isUIHidden;
     
-    UIImage *eye = UISystemImageNamed(afcVC.isUIHidden ? @"eye.slash.fill" : @"eye.fill");
+    [self setHide:isUIHidden];
+    
+    UIImage *eye = UISystemImageNamed(isUIHidden ? @"eye.slash.fill" : @"eye.fill");
     [self.hideUIButton setImage:eye forState:UIControlStateNormal];
     if ([self.parentViewController isKindOfClass:%c(AWEFeedCellViewController)]) {
-        [afcVC setAccessoriesHidden:afcVC.isUIHidden];
+        [afcVC setAccessoriesHidden:isUIHidden];
     }
     
-    self.hideUIButton.alpha = afcVC.isUIHidden ? 0.25 : kButtonAlpha;
-
-    self.downloadButton.hidden = afcVC.isUIHidden || !TTGSettings.shared.downloadWithoutWatermark;
-    afcVC.tabControl.hidden = afcVC.isUIHidden;
-    afcVC.specialEventEntranceView.hidden = afcVC.isUIHidden;
-    afcVC.searchEntranceView.hidden = afcVC.isUIHidden;
-    afcVC.MTLiveEntranceView.hidden = afcVC.isUIHidden;
+    self.hideUIButton.alpha = isUIHidden ? 0.25 : kButtonAlpha;
+    self.downloadButton.hidden = isUIHidden || !TTGSettings.shared.downloadWithoutWatermark;
+    
+    afcVC.tabControl.hidden = isUIHidden;
+    afcVC.specialEventEntranceView.hidden = isUIHidden;
+    afcVC.searchEntranceView.hidden = isUIHidden;
+    afcVC.MTLiveEntranceView.hidden = isUIHidden;
 }
 %end
     

@@ -39,9 +39,10 @@
 @property (nonatomic, readonly) UIView *MTLiveEntranceView;
 @property (nonatomic, readonly) UIView *tabControl;
 @property (nonatomic, readonly) UIView *specialEventEntranceView;
-@property (nonatomic) BOOL isUIHidden; // new property
 - (void)setAccessoriesHidden:(BOOL)arg1;
-+ (AWEFeedContainerViewController *)sharedInstance; // new
+
+@property (readonly, class) AWEFeedContainerViewController *sharedInstance; // new
+@property (nonatomic) BOOL isUIHidden; // new property
 @end
 
 @interface AWEPlayInteractionBaseElement : NSObject
