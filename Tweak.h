@@ -2,8 +2,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <libhdev/HUtilities/HDownloadMediaWithProgress.h>
+#import "TTGSettings.h"
 
-#define PLIST_PATH "/var/mobile/Library/Preferences/com.haoict.tiktokgodpref.plist"
 #define PREF_CHANGED_NOTIF "com.haoict.tiktokgodpref/PrefChanged"
 
 @interface AWEURLModel : NSObject
@@ -35,17 +35,32 @@
 @end
 
 @interface AWEFeedContainerViewController : UIViewController
-@property(retain, nonatomic) UIView *tabControl;
-@property(retain, nonatomic) UIView *specialEventEntranceView;
-@property(nonatomic) BOOL isUIHidden; // new property
+@property (nonatomic, readonly) UIView *searchEntranceView;
+@property (nonatomic, readonly) UIView *MTLiveEntranceView;
+@property (nonatomic, readonly) UIView *tabControl;
+@property (nonatomic, readonly) UIView *specialEventEntranceView;
 - (void)setAccessoriesHidden:(BOOL)arg1;
-+ (AWEFeedContainerViewController *)sharedInstance; // new
+
+@property (readonly, class) AWEFeedContainerViewController *sharedInstance; // new
+@property (nonatomic) BOOL isUIHidden; // new property
+@end
+
+@interface AWEPlayInteractionBaseElement : NSObject
+@end
+
+@interface AWEPlayInteractionElementContainer : NSObject
+@property (readonly) NSArray<__kindof AWEPlayInteractionBaseElement *> *elementArray;
+@property (readonly) UIStackView *containerView;
 @end
 
 @interface AWEPlayInteractionViewController : UIViewController
-@property(retain, nonatomic) AWEAwemeModel *model;
-@property(nonatomic, retain) UIButton *hideUIButton; // new property
-@property(nonatomic, retain) UIButton *downloadButton; // new property
+@property AWEAwemeModel *model;
+@property UIStackView *ttgButtonStack; // new property
+@property UIButton *hideUIButton; // new property
+@property UIButton *downloadButton; // new property
+
+@property (readonly) AWEPlayInteractionElementContainer *rightContainer;
+
 - (void)setHide:(BOOL)arg1;
 - (void)updateShowOrHideUI; // new
 @end
