@@ -11,24 +11,19 @@ BOOL changeRegion;
 BOOL showProgressBar;
 BOOL canHideUI;
 BOOL enableFavoritesCollections;
-BOOL showAdditionalDownloadButton;
 NSDictionary *region;
 
 static void reloadPrefs() {
-    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:@PLIST_PATH] ?: @{
-        @"noads": @YES,
-        @"downloadWithoutWatermark": @YES,
-        @"canHideUI": @YES,
-    };
+    NSDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@PLIST_PATH] ?: [@{} mutableCopy];
 
-    noads = settings[@"noads"];
-    downloadWithoutWatermark = settings[@"downloadWithoutWatermark"];
-    autoPlayNextVideo = settings[@"autoPlayNextVideo"];
-    changeRegion = settings[@"changeRegion"];
-    region = settings[@"region"];
-    showProgressBar = settings[@"showProgressBar"];
-    enableFavoritesCollections = settings[@"enableFavoritesCollections"];
-    canHideUI = settings[@"canHideUI"];
+    noads = [[settings objectForKey:@"noads"] ?: @(YES) boolValue];
+    downloadWithoutWatermark = [[settings objectForKey:@"downloadWithoutWatermark"] ?: @(YES) boolValue];
+    autoPlayNextVideo = [[settings objectForKey:@"autoPlayNextVideo"] ?: @(NO) boolValue];
+    changeRegion = [[settings objectForKey:@"changeRegion"] ?: @(NO) boolValue];
+    region = [settings objectForKey:@"region"] ?: [@{} mutableCopy];
+    showProgressBar = [[settings objectForKey:@"showProgressBar"] ?: @(NO) boolValue];
+    enableFavoritesCollections = [[settings objectForKey:@"enableFavoritesCollections"] ?: @(NO) boolValue];
+    canHideUI = [[settings objectForKey:@"canHideUI"] ?: @(YES) boolValue];
 }
 
 %group CoreLogic
