@@ -12,6 +12,7 @@ Best free & open source tweak for TikTok app on iOS 12 - 14
 - Show progress bar (for fast forward or rewind video)
 - Can hide UI (view video in full screen)
 - Change Region (may not work for iPad and some devices)
+- Bypass jailbreak detection (make like and follow work)
 - Support iOS 12 - 14 & latest TikTok version
 
 ## Cydia Repo
@@ -43,6 +44,10 @@ make do
 [Ali7assan](https://twitter.com/slfar01) (Ar Translator)
 
 [Barış Güreşçi](https://twitter.com/BarisGuresci) (Tr Translator)
+
+[Tanner Bennett](https://github.com/NSExceptional)
+
+[Ahmed Bafkir](https://twitter.com/Peaceful_0) (Jailbreak detection bypass)
 
 My project uses some source code from [hookTikTok](https://github.com/chenxk-j/hookTikTok/blob/master/hooktiktok/hooktiktok.xm#L23) by chenxk-j for Change Region function. Credit goes to him. Thanks!
 

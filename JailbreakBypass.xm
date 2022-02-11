@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+// Thanks Ahmed Bafkir (https://twitter.com/Peaceful_0)
 // https://pastecode.io/s/jsc6k17f
 NSArray *jailbreakPaths = @[
     ///Applications
