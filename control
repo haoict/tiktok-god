@@ -1,7 +1,7 @@
 Package: com.haoict.tiktokgod
 Name: TikTok God
 Depends: mobilesubstrate, preferenceloader, com.haoict.libhdev (>= 4.8.1), firmware (>= 12)
-Version: 2.1.0
+Version: 3.0.0
 Architecture: iphoneos-arm
 Description: The best tweak for TikTok app.
  The best tweak for TikTok app.
@@ -14,6 +14,7 @@ Description: The best tweak for TikTok app.
  - Change Region (may not work for iPad and some devices)
  - Show progress bar (for fast forward or rewind video)
  - Can hide UI (view video in full screen)
+ - Bypass jailbreak detection (make like and follow work)
  - Support iOS 12 - 14 & latest TikTok version
  . 
  I work very hard to make good, free and open source tweaks for everyone
