@@ -174,6 +174,7 @@
           <string>South Korea 🇰🇷</string>
           <string>United Kingdom 🇬🇧</string>
           <string>United States 🇺🇸</string>
+		  <string>Spain 🇪🇸</string>
           <string>Australia 🇦🇺</string>
           <string>Canada 🇨🇦</string>
           <string>Argentina 🇦🇷</string>
@@ -278,7 +279,17 @@
             <key>mcc</key>
             <string>310</string>
             <key>mnc</key>
-            <string>032</string>
+            <string>660</string>
+          </dict>
+		  <dict>
+            <key>area</key>
+            <string>Spain 🇪🇸</string>
+            <key>code</key>
+            <string>ES</string>
+            <key>mcc</key>
+            <string>214</string>
+            <key>mnc</key>
+            <string>07</string>
           </dict>
           <dict>
             <key>area</key>
