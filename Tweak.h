@@ -61,3 +61,7 @@
 @interface AWEFeedTableViewController : UIViewController
 - (void)scrollToNextVideo;
 @end
+
+@interface AWEShareLinkModel
+-(NSString *)parsedURL:(NSString *)fullURL;
+@end
